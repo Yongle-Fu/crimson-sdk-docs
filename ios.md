@@ -1,7 +1,7 @@
 # iOS
-## [下载SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/CrimsonBlue.xcframework.zip)
 
-## [下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/CrimsonBlueExample.zip)
+## [下载SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/CrimsonBlue.xcframework.zip)   [下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/CrimsonBlueExample.zip)  [演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/example.mp4)
+
 ## Scan-扫描
 
 ```swift
@@ -14,7 +14,7 @@ extension ScanVC: CrimsonScannerDelegate {
             CrimsonBlueManager.shared.startScan()
         }
     }
-    
+
     func onFoundDevices(_ devices: Array<CrimsonBlueDevice>) {
         self.devices = devices
         //TODO
@@ -86,13 +86,13 @@ device.startIMU(sampleRate: .sr104) { (resp) in
     @objc optional func onError(_ error: CrimsonError)
     @objc optional func onDeviceInfoReady(_ deviceInfo: DeviceInfo)
     @objc optional func onSystemInfo(_ systemInfo: SystemInfo)
-    
+
     @objc optional func onConnectivityChanged(_ connectivity: Connectivity)
     @objc optional func onContactStateChanged(_ contactState: ContactState)
     @objc optional func onOrientationChanged(_ orientation: Orientation)
     @objc optional func onLeadOffStatus(_ center: ContactState, _ side: ContactState) //center_rld, side_channels
     @objc optional func onBatteryLevelChanged(_ batteryLevel: Int)
-    
+
     @objc optional func onIMUData(_ imu: IMU)
     @objc optional func onEEGData(_ eeg: EEG)
     @objc optional func onBrainWave(_ wave: BrainWave)
@@ -128,6 +128,4 @@ public func setSleepIdleTime(_ timeSec: Int, onResponse: @escaping CrimsonRespCa
 // @param intensity => vibration intensity, 0 ~ 100
 public func setVibrationIntensity(_ intensity: Int, onResponse: @escaping CrimsonRespCallback)
 ```
-
-
 
