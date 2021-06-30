@@ -4,6 +4,8 @@
 
 ## Scan-扫描
 
+### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
+
 ```swift
 CrimsonBlueManager.shared.startScan()
 CrimsonBlueManager.scannerDelegate = self
@@ -45,17 +47,18 @@ extension ScanVC: CrimsonDelegate {
 ### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
 
 ```swift
-    func pair(device: CrimsonBlueDevice) {
-        startUIBlockingIndicator(message: "Pairing")
-        device.pair { resp in
-            stopUIBlockingIndicator()
-            if resp.success() {
-                cmsn_print("pair success")
-            } else {
-                cmsn_print("pair failed")
-            }
+func pair(device: CrimsonBlueDevice) {
+    startUIBlockingIndicator(message: "Pairing")
+    device.delegate = self
+    device.pair { resp in
+        stopUIBlockingIndicator()
+        if resp.success() {
+            cmsn_print("pair success")
+        } else {
+            cmsn_print("pair failed")
         }
     }
+}
 ```
 
 ## StartEEG-开启传输脑电数据

@@ -20,6 +20,8 @@ await HeadbandManager.init();
 
 ## Scan-扫描
 
+### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
+
 ```dart
 await HeadbandManager.setScanMode(HeadbandScanMode.crimson);
 if (Platform.isAndroid) {
@@ -53,7 +55,6 @@ try {
     await HeadbandManager.startScan(); //restart scan
 }
 ```
-
 
 ## CrimsonDelegate
 
@@ -91,6 +92,4 @@ HeadbandProxy.instance.onBatteryLevelChanged
 ```
 
 ## More-更多详见SDK
-
-
 
