@@ -2,7 +2,7 @@
 
 ## [下载SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/CrimsonBlue.xcframework.zip)   [下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/CrimsonBlueExample.zip)  [演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/example.mp4)
 
-## Scan-扫描
+## Scan 扫描
 
 ### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
 
@@ -24,7 +24,7 @@ extension ScanVC: CrimsonScannerDelegate {
 }
 ```
 
-## Connect-连接
+## Connect 连接
 
 ```swift
 CrimsonBlueManager.shared.stopScan()
@@ -42,7 +42,7 @@ extension ScanVC: CrimsonDelegate {
 }
 ```
 
-## Pair-配对
+## Pair 配对
 
 ### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
 
@@ -61,14 +61,14 @@ func pair(device: CrimsonBlueDevice) {
 }
 ```
 
-## StartEEG-开启传输脑电数据
+## StartEEG 开启传输脑电数据
 
 ```swift
 device.delegate = self
 device.startEEGStream()
 ```
 
-## StartIMU-开启传输陀螺仪数据
+## StartIMU 开启传输陀螺仪数据
 
 ```swift
 device.delegate = self
@@ -105,7 +105,7 @@ device.startIMU(sampleRate: .sr104) { (resp) in
 }
 ```
 
-## More-更多详见SDK
+## More 更多详见SDK
 
 ```swift
 public func connect()

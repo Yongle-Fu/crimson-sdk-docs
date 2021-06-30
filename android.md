@@ -2,7 +2,7 @@
 
 ## [下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/android/example.zip)  [演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/android/example.mp4)
 
-## Scan-扫描
+## Scan 扫描
 
 ### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
 
@@ -31,7 +31,7 @@ CrimsonSDK.scanDevices(this, new CrimsonDeviceScanListener() {
 });
 ```
 
-## Connect-连接
+## Connect 连接
 
 ```java
 listener = new DeviceListener();
@@ -39,7 +39,7 @@ device.setListener(listener);
 device.connect(this);
 ```
 
-## Pair-配对
+## Pair 配对
 
 ### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
 
@@ -72,7 +72,7 @@ if (device.isInPairingMode()) {
 }
 ```
 
-## StartEEG-开启传输脑电数据
+## StartEEG 开启传输脑电数据
 
 ```java
 int _ = device.startDataStream(error -> {
@@ -82,7 +82,7 @@ int _ = device.startDataStream(error -> {
 });
 ```
 
-## StartIMU-开启传输陀螺仪数据
+## StartIMU 开启传输陀螺仪数据
 
 ```c
 typedef enum { 
@@ -124,7 +124,7 @@ public abstract class CrimsonDeviceListener {
 }
 ```
 
-## More-更多详见SDK
+## More 更多详见SDK
 
 ```java
 public void connect(@NonNull Context context)
