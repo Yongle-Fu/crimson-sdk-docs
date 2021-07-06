@@ -124,7 +124,7 @@ public abstract class CrimsonDeviceListener {
 }
 ```
 
-## More 更多详见SDK
+## More
 
 ```java
 public void connect(@NonNull Context context)

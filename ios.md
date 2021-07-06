@@ -105,7 +105,7 @@ device.startIMU(sampleRate: .sr104) { (resp) in
 }
 ```
 
-## More 更多详见SDK
+## More
 
 ```swift
 public func connect()
