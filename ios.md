@@ -1,19 +1,22 @@
 # iOS
 
 ## Download
+
 [下载SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/ios/CrimsonSDK.xcframework.zip)
-***
-[下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/ios/CrimsonSDKExample.zip)  
-***
+
+[下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/ios/CrimsonSDKExample.zip)
+
 [演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/example.mp4)
 
 ## Requirement
+
 iOS 8.0+
 
 ## Integration
 
-* CocoaPods (iOS 8+)
-You can use CocoaPods to install CrimsonSDK by adding it to your Podfile:
+* **CocoaPods \(iOS 8+\)**
+
+  You can use CocoaPods to install **CrimsonSDK** by adding it to your Podfile:
 
 ```ruby
 platform :ios, '10.0'
@@ -23,14 +26,15 @@ use_frameworks!
 pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/ios/CrimsonSDK.podspec'
 ```
 
-* 手动集成
-添加CrimsonSDK.xcframework依赖库，在项目设置target -> 选项卡General ->Linked Frameworks, Libraries and Embedded Content，如图
-[import_crimson_sdk](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/import_crimson_sdk.png)
+* **手动集成**
 
-依赖库
-Accelerate.framework
-CoreBluetooth.framework
-libc++.tbd
+  添加**CrimsonSDK.xcframework**依赖库，在项目Target -&gt; General -&gt; Linked Frameworks, Libraries and Embedded Content，如图![](.gitbook/assets/import_crimson_sdk.png) 
+
+    **Dependencies**
+
+* Accelerate.framework 
+* CoreBluetooth.framework 
+* libc++.tbd
 
 ## Usage
 
@@ -171,12 +175,12 @@ device.startIMU(sampleRate: .sr104) { (resp) in
     @objc optional func onError(_ error: CrimsonError)
     @objc optional func onDeviceInfoReady(_ deviceInfo: DeviceInfo)
     @objc optional func onSystemInfo(_ systemInfo: SystemInfo)
-    
+
     @objc optional func onConnectivityChange(_ connectivity: Connectivity)
     @objc optional func onContactStateChange(_ contactState: ContactState)
     @objc optional func onOrientationChange(_ orientation: Orientation)
     @objc optional func onBatteryLevelChange(_ batteryLevel: Int)
-    
+
     @objc optional func onIMUData(_ imu: IMU)
     @objc optional func onEEGData(_ eeg: EEG)
     @objc optional func onBrainWave(_ wave: BrainWave)
@@ -211,3 +215,4 @@ public func setSleepIdleTime(_ timeSec: Int, onResponse: @escaping CrimsonRespCa
 // @param intensity => vibration intensity, 0 ~ 100
 public func setVibrationIntensity(_ intensity: Int, onResponse: @escaping CrimsonRespCallback)
 ```
+
