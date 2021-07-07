@@ -14,9 +14,9 @@ iOS 8.0+
 
 ## Integration
 
-* **CocoaPods \(iOS 8+\)**
+### CocoaPods \(iOS 8+\)
 
-  You can use CocoaPods to install **CrimsonSDK** by adding it to your Podfile:
+You can use CocoaPods to install **CrimsonSDK** by adding it to your Podfile:
 
 ```ruby
 platform :ios, '10.0'
@@ -26,12 +26,11 @@ use_frameworks!
 pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/ios/CrimsonSDK.podspec'
 ```
 
-* **手动集成**
+### 手动集成
 
-  添加**CrimsonSDK.xcframework**依赖库，在项目Target -&gt; General -&gt; Linked Frameworks, Libraries and Embedded Content，如图![](.gitbook/assets/import_crimson_sdk.png) 
+添加**CrimsonSDK.xcframework**依赖库，在项目Target -&gt; General -&gt; Linked Frameworks, Libraries and Embedded Content，如图![](.gitbook/assets/import_crimson_sdk.png) 
 
-    **Dependencies**
-
+#### Dependencies
 * Accelerate.framework 
 * CoreBluetooth.framework 
 * libc++.tbd
