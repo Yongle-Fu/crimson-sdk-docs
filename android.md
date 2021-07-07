@@ -117,8 +117,8 @@ public class ContactState {
 // 佩戴方向，检测是否佩戴反
 public class Orientation {
     public static final int UNKNOWN = 0;
-    public static final int UPWARD = 1;   //头环戴正
-    public static final int DOWNWARD = 2; //头环戴反
+    public static final int UPWARD = 1;   //头环戴反
+    public static final int DOWNWARD = 2; //头环戴正
 }
 // EEG
 public class EEG {

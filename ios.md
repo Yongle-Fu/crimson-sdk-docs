@@ -10,11 +10,11 @@
 
 ## Requirement
 
-iOS 8.0+
+iOS 10.0+
 
 ## Integration
 
-### CocoaPods \(iOS 8+\)
+### CocoaPods \(iOS 10.0+\)
 
 You can use CocoaPods to install **CrimsonSDK** by adding it to your Podfile:
 
