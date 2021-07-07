@@ -10,7 +10,9 @@
 
 ## Requirement
 
-iOS 10.0+
+* iOS 10.0+
+* arm64
+* BitCode Disabled
 
 ## Integration
 
