@@ -1,37 +1,61 @@
 # Android
 
-## [下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/android/example.zip)  [演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/android/example.mp4)
+## Download
+[下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/android/example.zip)
+***  
+[演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/android/example.mp4)
 
-## Scan 扫描
+## Requirement
+Android 6.0+
 
-### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
+## Integration
+
+```groovy
+repositories {
+    maven {
+        credentials {
+            username 'maven-read'
+            password 'tBauTKVo6IqiKvHd'
+        }
+        url = "https://nexus.ci.brainco.cn/repository/maven-public"
+    }
+}
+
+dependencies {
+    // import crimson-sdk from maven
+    implementation 'tech.brainco:crimsonsdk:1.0.1'
+    implementation 'tech.brainco:crimsonjna:1.0.1'
+}
+```
+
+## Usage
+
+### Scan 扫描
+
+#### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
 
 ```java
 showLoadingDialog();
-Activity that = this;
 CrimsonSDK.scanDevices(this, new CrimsonDeviceScanListener() {
     @Override
     public void onResult(List<CrimsonDevice> results) {
         dismissLoadingDialog();
-        if(results.size() == 0) showMessage("No headband found");
-        devices = results;
-        deviceListAdapter.notifyDataSetChanged();
+        // TODO: show scan result
     }
 
     @Override
     public void onError(CrimsonError error) {
         dismissLoadingDialog();
-        showError(error);
-        if(error.getCode() == CrimsonError.ERROR_PERMISSION_DENIED){
-            CrimsonPermissions.requestPermissions(that);
+        if (error.getCode() == CrimsonError.ERROR_PERMISSION_DENIED){
+            // TODO: request location Permission
         } else if(error.getCode() == CrimsonError.ERROR_BLE_DISABLED) {
-            CrimsonPermissions.enableBluetooth(that);
+            // TODO: request BLE Permission
         }
     }
 });
 ```
 
-## Connect 连接
+### Connect 连接
 
 ```java
 listener = new DeviceListener();
@@ -39,9 +63,9 @@ device.setListener(listener);
 device.connect(this);
 ```
 
-## Pair 配对
+### Pair 配对
 
-### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
+#### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
 
 ```java
 pairing = true;
@@ -72,7 +96,46 @@ if (device.isInPairingMode()) {
 }
 ```
 
-## StartEEG 开启传输脑电数据
+### Model
+
+```java
+// 头环连接状态
+public class Connectivity {
+    public static final int CONNECTING = 0;
+    public static final int CONNECTED = 1;
+    public static final int DISCONNECTING = 2;
+    public static final int DISCONNECTED = 3;
+}
+// 佩戴状态，电极与皮肤接触良好
+public class ContactState {
+    public static final int UNKNOWN = 0;
+    public static final int CONTACT = 1;   //佩戴好
+    public static final int NO_CONTACT = 2;//未戴好
+}
+// 佩戴方向，检测是否佩戴反
+public class Orientation {
+    public static final int UNKNOWN = 0;
+    public static final int UPWARD = 1;   //头环戴反
+    public static final int DOWNWARD = 2; //头环戴正
+}
+// EEG
+public class EEG {
+    private final int sequenceNumber;
+    private final double sampleRate;
+    private final float[] eegData;
+}
+// 脑电频域波段能量
+public class BrainWave {
+    private final double delta;
+    private final double theta;
+    private final double alpha;
+    private final double lowBeta;
+    private final double highBeta;
+    private final double gamma;
+}
+```
+
+### StartEEG 开启传输脑电数据
 
 ```java
 int _ = device.startDataStream(error -> {
@@ -82,7 +145,7 @@ int _ = device.startDataStream(error -> {
 });
 ```
 
-## StartIMU 开启传输陀螺仪数据
+### StartIMU 开启传输陀螺仪数据
 
 ```c
 typedef enum { 
@@ -102,18 +165,17 @@ device.configImu(0x40, error -> {
 });
 ```
 
-## CrimsonDeviceListener
+### CrimsonDeviceListener
 
 ```java
 public abstract class CrimsonDeviceListener {
     public void onError(CrimsonError error){}
-
-    public void onConnectivityChanged(int connectivity){}
     public void onDeviceInfoReady(DeviceInfo info){}
 
-    public void onBatteryLevelChanged(int batteryLevel){}
-    public void onContactStateChanged(int state){}
-    public void onOrientationChanged(int orientation){}
+    public void onConnectivityChange(int connectivity){}
+    public void onContactStateChange(int state){}
+    public void onOrientationChange(int orientation){}
+    public void onBatteryLevelChange(int batteryLevel){}
 
     public void onIMUData(IMU data){}
     public void onEEGData(EEG data){}
@@ -124,7 +186,7 @@ public abstract class CrimsonDeviceListener {
 }
 ```
 
-## More
+### More
 
 ```java
 public void connect(@NonNull Context context)
@@ -152,4 +214,3 @@ public int setSleepIdleTime(int timeSec, CrimsonResponseCallback callback)
 // @param intensity => vibration intensity, 0 ~ 100
 public int setVibrationIntensity(int intensity, CrimsonResponseCallback callback)
 ```
-
