@@ -82,6 +82,9 @@ if (device.isInPairingMode()) {
         } else {
             Toast.makeText(this, "Pair failed " + error.getMessage(), Toast.LENGTH_SHORT).show();
             devicePairButton.setText("Pair");
+            if (error.getCode() == 3) {
+                // TODO: 配对失败
+            }
         }
     });
 } else if (device.isInNormalMode()) {
@@ -93,6 +96,9 @@ if (device.isInPairingMode()) {
         } else {
             Toast.makeText(this, "Validate pair info failed " + error.getMessage(), Toast.LENGTH_SHORT).show();
             devicePairButton.setText("Pair");
+            if (error.getCode() == 4) {
+                // TODO: 检验配对信息失败，去重新配对
+            }
         }
     });
 }
@@ -117,8 +123,8 @@ public class ContactState {
 // 佩戴方向，检测是否佩戴反
 public class Orientation {
     public static final int UNKNOWN = 0;
-    public static final int UPWARD = 1;   //头环戴反
-    public static final int DOWNWARD = 2; //头环戴正
+    public static final int UPWARD = 1;   //头环戴正
+    public static final int DOWNWARD = 2; //头环戴反
 }
 // EEG
 public class EEG {

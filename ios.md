@@ -95,6 +95,10 @@ func pair(device: CrimsonDevice) {
         } else {
             cmsn_print("pair failed")
             BLEDeviceManager.shared.startScan() //restart scan device
+
+            if let sysResp = resp as? SysConfigResponse, sysResp.error?.code == .validatePairInfo {
+                // TODO: 检验配对信息失败
+            }
         }
     }
 }
