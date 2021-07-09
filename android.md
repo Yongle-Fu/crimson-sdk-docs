@@ -28,6 +28,14 @@ dependencies {
     implementation 'tech.brainco:crimsonsdk:1.0.1'
     implementation 'tech.brainco:crimsonjna:1.0.1'
 }
+
+// manifest
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.xxx.xxx">
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+</manifest>
 ```
 
 ## Usage

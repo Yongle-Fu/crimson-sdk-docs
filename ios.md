@@ -38,6 +38,17 @@ pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.co
 * CoreBluetooth.framework 
 * libc++.tbd
 
+### Info.plist
+
+```swift
+<key>NSBluetoothAlwaysUsageDescription</key>
+<string>APP需要通过蓝牙功能连接头环设备</string>
+<key>UIBackgroundModes</key>
+<array>
+<string>bluetooth-central</string>
+</array>
+```
+
 ## Usage
 
 ```java
