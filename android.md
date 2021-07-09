@@ -32,6 +32,19 @@ dependencies {
 
 ## Usage
 
+```java
+if 存在配对记录 
+	scan->connect->validatePairInfo->
+	if success: StartEEG
+	else if validatePairInfo fail error code == 4: // 提示去pair
+	else //提示retry
+		
+else	
+	// 提示用户切换到配对模式
+	// 可过滤掉不处于配对模式的设备
+	scan->connect->pair->(if success)->存储配对记录 & StartEEG
+```
+
 ### Scan 扫描
 
 #### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
@@ -70,37 +83,45 @@ device.connect(this);
 #### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
 
 ```java
-pairing = true;
-devicePairButton.setText("Pairing");
+void onConnectivityChange(int connectivity) {
+    if (connectivity == Connectivity.CONNECTED) {
+        pair()
+    }
+}
 
-if (device.isInPairingMode()) {
-    device.pair(error -> {
-        pairing = false;
-        if (error == null) {
-            paired = true;
-            devicePairButton.setText("Paired");
-        } else {
-            Toast.makeText(this, "Pair failed " + error.getMessage(), Toast.LENGTH_SHORT).show();
-            devicePairButton.setText("Pair");
-            if (error.getCode() == 3) {
-                // TODO: 配对失败
+func pair() {
+    pairing = true;
+    devicePairButton.setText("Pairing");
+    
+    if (device.isInPairingMode()) {
+        device.pair(error -> {
+            pairing = false;
+            if (error == null) {
+                paired = true;
+                devicePairButton.setText("Paired");
+            } else {
+                Toast.makeText(this, "Pair failed " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                devicePairButton.setText("Pair");
+                if (error.getCode() == 3) {
+                    // TODO: 配对失败
+                }
             }
-        }
-    });
-} else if (device.isInNormalMode()) {
-    device.validatePairInfo(error -> {
-        pairing = false;
-        if (error == null) {
-            paired = true;
-            devicePairButton.setText("Paired");
-        } else {
-            Toast.makeText(this, "Validate pair info failed " + error.getMessage(), Toast.LENGTH_SHORT).show();
-            devicePairButton.setText("Pair");
-            if (error.getCode() == 4) {
-                // TODO: 检验配对信息失败，去重新配对
+        });
+    } else if (device.isInNormalMode()) {
+        device.validatePairInfo(error -> {
+            pairing = false;
+            if (error == null) {
+                paired = true;
+                devicePairButton.setText("Paired");
+            } else {
+                Toast.makeText(this, "Validate pair info failed " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                devicePairButton.setText("Pair");
+                if (error.getCode() == 4) {
+                    // TODO: 检验配对信息失败，去重新配对
+                }
             }
-        }
-    });
+        });
+    }
 }
 ```
 
