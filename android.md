@@ -35,8 +35,8 @@ dependencies {
 ```java
 if 存在配对记录 
 	scan->connect->validatePairInfo->
-	if success: StartEEG
-	else if validatePairInfo fail error code == 4: // 提示去pair
+	if validatePairInfo_success: StartEEG
+	else if validatePairInfo_fail_error_code == 4: // 提示去pair
 	else //提示retry
 		
 else	
