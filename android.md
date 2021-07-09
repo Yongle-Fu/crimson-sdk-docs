@@ -76,6 +76,30 @@ CrimsonSDK.scanDevices(this, new CrimsonDeviceScanListener() {
 listener = new DeviceListener();
 device.setListener(listener);
 device.connect(this);
+
+// CrimsonDeviceListener
+public abstract class CrimsonDeviceListener {
+    public void onError(CrimsonError error){}
+    public void onDeviceInfoReady(DeviceInfo info){}
+
+    public void onConnectivityChange(int connectivity){}
+    public void onContactStateChange(int state){}
+    public void onOrientationChange(int orientation){}
+    public void onBatteryLevelChange(int batteryLevel){}
+
+    public void onIMUData(IMU data){}
+    public void onEEGData(EEG data){}
+    public void onBrainWave(BrainWave wave){}
+    public void onAttention(float attention){}
+    public void onMeditation(float meditation){}
+    public void onBlink(){}
+}
+
+void onConnectivityChange(int connectivity) {
+    if (connectivity == Connectivity.CONNECTED) {
+        pair()
+    }
+}
 ```
 
 ### Pair 配对
@@ -83,12 +107,6 @@ device.connect(this);
 #### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
 
 ```java
-void onConnectivityChange(int connectivity) {
-    if (connectivity == Connectivity.CONNECTED) {
-        pair()
-    }
-}
-
 func pair() {
     pairing = true;
     devicePairButton.setText("Pairing");
@@ -192,27 +210,6 @@ device.configImu(0x40, error -> {
         Log.i("startIMU:" + error.getCode(), error.getMessage());
     }
 });
-```
-
-### CrimsonDeviceListener
-
-```java
-public abstract class CrimsonDeviceListener {
-    public void onError(CrimsonError error){}
-    public void onDeviceInfoReady(DeviceInfo info){}
-
-    public void onConnectivityChange(int connectivity){}
-    public void onContactStateChange(int state){}
-    public void onOrientationChange(int orientation){}
-    public void onBatteryLevelChange(int batteryLevel){}
-
-    public void onIMUData(IMU data){}
-    public void onEEGData(EEG data){}
-    public void onBrainWave(BrainWave wave){}
-    public void onAttention(float attention){}
-    public void onMeditation(float meditation){}
-    public void onBlink(){}
-}
 ```
 
 ### More

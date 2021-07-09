@@ -91,6 +91,25 @@ extension ScanVC: CrimsonDelegate {
         }
     }
 }
+
+// CrimsonDelegate
+@objc public protocol CrimsonDelegate {
+    @objc optional func onError(_ error: CrimsonError)
+    @objc optional func onDeviceInfoReady(_ deviceInfo: DeviceInfo)
+    @objc optional func onSystemInfo(_ systemInfo: SystemInfo)
+
+    @objc optional func onConnectivityChange(_ connectivity: Connectivity)
+    @objc optional func onContactStateChange(_ contactState: ContactState)
+    @objc optional func onOrientationChange(_ orientation: Orientation)
+    @objc optional func onBatteryLevelChange(_ batteryLevel: Int)
+
+    @objc optional func onIMUData(_ imu: IMU)
+    @objc optional func onEEGData(_ eeg: EEG)
+    @objc optional func onBrainWave(_ wave: BrainWave)
+    @objc optional func onBlink()
+    @objc optional func onAttention(_ attention: Float)
+    @objc optional func onMeditation(_ meditation: Float)
+}
 ```
 
 ### Pair 配对
@@ -184,28 +203,6 @@ device.startIMU(sampleRate: .sr104) { (resp) in
     } else {
         self.toast("\(resp.message())")
     }
-}
-```
-
-### CrimsonDelegate
-
-```swift
-@objc public protocol CrimsonDelegate {
-    @objc optional func onError(_ error: CrimsonError)
-    @objc optional func onDeviceInfoReady(_ deviceInfo: DeviceInfo)
-    @objc optional func onSystemInfo(_ systemInfo: SystemInfo)
-
-    @objc optional func onConnectivityChange(_ connectivity: Connectivity)
-    @objc optional func onContactStateChange(_ contactState: ContactState)
-    @objc optional func onOrientationChange(_ orientation: Orientation)
-    @objc optional func onBatteryLevelChange(_ batteryLevel: Int)
-
-    @objc optional func onIMUData(_ imu: IMU)
-    @objc optional func onEEGData(_ eeg: EEG)
-    @objc optional func onBrainWave(_ wave: BrainWave)
-    @objc optional func onBlink()
-    @objc optional func onAttention(_ attention: Float)
-    @objc optional func onMeditation(_ meditation: Float)
 }
 ```
 
