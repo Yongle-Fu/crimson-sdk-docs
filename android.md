@@ -113,12 +113,17 @@ device.connect(this);
 
 // CrimsonDeviceListener
 public abstract class CrimsonDeviceListener {
+    // class CrimsonError
     public void onError(CrimsonError error){}
     public void onDeviceInfoReady(DeviceInfo info){}
 
+    // Enum Connectivity
     public void onConnectivityChange(int connectivity){}
+    // Enum ContactState
     public void onContactStateChange(int state){}
+    // Enum Orientation
     public void onOrientationChange(int orientation){}
+    // batteryLevel 区间在0~100, -1表示未知
     public void onBatteryLevelChange(int batteryLevel){}
 
     public void onIMUData(IMU data){}
@@ -259,7 +264,7 @@ public int stopDataStream(CrimsonResponseCallback callback)
 public int startIMU(int sampleRate, CrimsonResponseCallback callback)
 public int stopIMU(CrimsonResponseCallback callback)
 
-// @param name length should be 4 ~ 18
+// @param name length should be 4 ~ 18, 修改设备名称成功之后，固件会断开连接
 public int setDeviceName(String name, CrimsonResponseCallback callback)
 
 /*
@@ -275,4 +280,6 @@ public int setSleepIdleTime(int timeSec, CrimsonResponseCallback callback)
 // @param intensity => vibration intensity, 0 ~ 100
 public int setVibrationIntensity(int intensity, CrimsonResponseCallback callback)
 ```
+
+
 

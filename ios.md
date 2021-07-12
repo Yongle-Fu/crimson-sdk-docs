@@ -112,6 +112,7 @@ extension ScanVC: CrimsonDelegate {
     @objc optional func onConnectivityChange(_ connectivity: Connectivity)
     @objc optional func onContactStateChange(_ contactState: ContactState)
     @objc optional func onOrientationChange(_ orientation: Orientation)
+    // batteryLevel 区间在0~100, -1表示未知
     @objc optional func onBatteryLevelChange(_ batteryLevel: Int)
 
     @objc optional func onIMUData(_ imu: IMU)
