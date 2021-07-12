@@ -55,7 +55,7 @@ pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.co
 
 #### 首次配对新设备时，需要先将头环设置为 _配对_  模式--&gt;蓝灯快闪
 
-{% page-ref page="qianeled-deng-guang-shuo-ming.md" %}
+{% page-ref page="faq.md" %}
 
 ```swift
 BLEDeviceManager.shared.startScan()

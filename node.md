@@ -75,7 +75,9 @@ let cmsnSDK;
 
 ### Scan 扫描
 
-#### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
+#### 首次配对新设备时，需要先将头环设置为 _配对_  模式--&gt;蓝灯快闪
+
+{% page-ref page="faq.md" %}
 
 ```js
 cmsnSDK.startScan(async device => { 
