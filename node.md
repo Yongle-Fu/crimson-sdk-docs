@@ -20,8 +20,8 @@ package.json
 },
 
 "devDependencies": {
-"@mapbox/node-pre-gyp": "^1.0.5",
-"node-gyp": "^8.1.0"
+    "@mapbox/node-pre-gyp": "^1.0.5",
+    "node-gyp": "^8.1.0"
 }
 ```
 
@@ -112,6 +112,9 @@ const exampleListener = new CMSNDeviceListener({
     onError: error => { //CMSNError
         console.error('[ERROR]', error.message);
     },
+    onDeviceInfoReady: (device, deviceInfo) => { //deviceInfo
+        console.log(device.name, `Device info is ready:`, deviceInfo);
+    },
     onConnectivityChanged: (device, connectivity) => { //Connectivity
         console.log({ message: `[${device.name}] Connectivity changed to: ${CONNECTIVITY(connectivity)}` });
         if (connectivity == CONNECTIVITY.enum('connected')) {
@@ -126,9 +129,7 @@ const exampleListener = new CMSNDeviceListener({
             });
         }
     },
-    onDeviceInfoReady: (device, deviceInfo) => { //deviceInfo
-        console.log(device.name, `Device info is ready:`, deviceInfo);
-    },
+    //********************NOTE: invoked after startDataStream*******************
     onContactStateChanged: (device, contactState) => { //ContactState
         console.log(device.name, `Contact state changed to:`, CONTACT_STATE(contactState));
     },

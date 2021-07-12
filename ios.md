@@ -97,13 +97,13 @@ extension ScanVC: CrimsonDelegate {
     @objc optional func onError(_ error: CrimsonError)
     @objc optional func onDeviceInfoReady(_ deviceInfo: DeviceInfo)
     @objc optional func onSystemInfo(_ systemInfo: SystemInfo)
-
-    @objc optional func onConnectivityChange(_ connectivity: Connectivity)
-    @objc optional func onContactStateChange(_ contactState: ContactState)
-    @objc optional func onOrientationChange(_ orientation: Orientation)
     // batteryLevel 区间在0~100, -1表示未知
     @objc optional func onBatteryLevelChange(_ batteryLevel: Int)
-
+    @objc optional func onConnectivityChange(_ connectivity: Connectivity)
+    
+    // NOTE: invoked after startEEG
+    @objc optional func onContactStateChange(_ contactState: ContactState)
+    @objc optional func onOrientationChange(_ orientation: Orientation)
     @objc optional func onIMUData(_ imu: IMU)
     @objc optional func onEEGData(_ eeg: EEG)
     @objc optional func onBrainWave(_ wave: BrainWave)
