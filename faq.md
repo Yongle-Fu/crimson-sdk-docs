@@ -1,6 +1,6 @@
-# faq
+# 常见问题说明
 
-### 配对说明
+## [配对**连接**](https://www.yuque.com/docs/share/4afe9d08-cf4b-42fb-93da-0ee239830090)\*\*\*\*
 
 头环**首次连接**到新设备时，必须先切换到**配对模式**使用
 
@@ -12,18 +12,18 @@
 
 ```java
 if 存在配对记录 
-	scan->connect->validatePairInfo->
-	if validatePairInfo_success: StartEEG
-	else if validatePairInfo_fail_error_code == 4: // 提示去pair
-	else //提示retry
-		
-else	
-	// 提示用户切换到配对模式
-	// 可过滤掉不处于配对模式的设备
-	scan->connect->pair->(if success)->存储配对记录 & StartEEG
+    scan->connect->validatePairInfo->
+    if validatePairInfo_success: StartEEG
+    else if validatePairInfo_fail_error_code == 4: // 提示去pair
+    else //提示retry
+
+else    
+    // 提示用户切换到配对模式
+    // 可过滤掉不处于配对模式的设备
+    scan->connect->pair->(if success)->存储配对记录 & StartEEG
 ```
 
-### 前额LED灯光说明
+## [LED灯光](https://www.yuque.com/docs/share/a0cee022-8f4e-4f06-9221-e05cfec2b608)
 
 ```java
 // 在连接并配对/校验配对信息成功之后，灯光由软件/app控制，其他情况固件端会进行接管
