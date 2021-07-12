@@ -14,7 +14,7 @@
 
 package.json
 
-```json
+```javascript
 "dependencies": {
     "cmsn-noble": "^3.0.3"
 },
@@ -26,6 +26,7 @@ package.json
 ```
 
 ### when npm install, will download prebuilt lib if exists
+
 * noble-v3.0.3-electron-v7.3-darwin-x64.tar.gz
 * noble-v3.0.3-electron-v7.3-win32-x64.tar.gz
 * noble-v3.0.3-node-v72-darwin-x64.tar.gz
@@ -61,7 +62,7 @@ extraResources:
 
 ### Init
 
-```js
+```javascript
 let cmsnSDK;
 (async function main() {
     console.log('------------- Example Main -------------');
@@ -79,7 +80,7 @@ let cmsnSDK;
 
 {% page-ref page="faq.md" %}
 
-```js
+```javascript
 cmsnSDK.startScan(async device => { 
     console.log(`found device, [${p.name}] ${p.address}`);
 });
@@ -87,7 +88,7 @@ cmsnSDK.startScan(async device => {
 
 ### Connect 连接
 
-```js
+```javascript
 await cmsnSDK.stopScan();
 await utils.sleep(500);
 device.listener = exampleListener;
@@ -96,7 +97,7 @@ await device.connect();
 
 ### Disconnect 断开连接
 
-```js
+```javascript
 // disconnect device
 await device.disconnect();
 
@@ -106,7 +107,7 @@ CrimsonSDK.dispose();
 
 ### CrimsonDeviceListener
 
-```js
+```javascript
 const exampleListener = new CMSNDeviceListener({
     onError: error => { //CMSNError
         console.error('[ERROR]', error.message);
@@ -152,9 +153,9 @@ const exampleListener = new CMSNDeviceListener({
 });
 ```
 
-### ENUM
+### Model
 
-```js
+```javascript
 // 头环连接状态
 const CONNECTIVITY = createEnum({
     connecting: 0,
@@ -178,7 +179,7 @@ const ORIENTATION = createEnum({
 
 ### StartIMU 开启传输陀螺仪数据
 
-```js
+```javascript
 // IMU SampleRate
 const IMU = {
     SAMPLE_RATE: createEnum({
@@ -196,7 +197,7 @@ device.startIMU(IMU.SAMPLE_RATE.enum('sr104'));
 
 ### More
 
-```js
+```javascript
 class CMSNDevice
     id, 
     name, 
@@ -220,3 +221,4 @@ class CMSNDevice
     setVibrationIntensity(intensity, cb)
 }
 ```
+
