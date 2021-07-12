@@ -42,19 +42,6 @@ dependencies {
 
 ## Usage
 
-```java
-if 存在配对记录 
-	scan->connect->validatePairInfo->
-	if validatePairInfo_success: StartEEG
-	else if validatePairInfo_fail_error_code == 4: // 提示去pair
-	else //提示retry
-		
-else	
-	// 提示用户切换到配对模式
-	// 可过滤掉不处于配对模式的设备
-	scan->connect->pair->(if success)->存储配对记录 & StartEEG
-```
-
 ### Scan 扫描
 
 #### 首次配对新设备时，需要先将头环设置为 _配对_  模式--&gt;蓝灯快闪
