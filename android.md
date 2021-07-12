@@ -13,6 +13,7 @@ Android 6.0+
 ## Integration
 
 ```groovy
+// build.gradle
 repositories {
     maven {
         credentials {
@@ -23,10 +24,11 @@ repositories {
     }
 }
 
+// app/build.gradle
 dependencies {
     // import crimson-sdk from maven
-    implementation 'tech.brainco:crimsonsdk:1.0.1'
-    implementation 'tech.brainco:crimsonjna:1.0.1'
+    api 'tech.brainco:crimsonjna:1.0.1+2'
+    api 'tech.brainco:crimsonsdk:1.0.1+2'
 }
 
 // manifest
@@ -55,27 +57,53 @@ else
 
 ### Scan 扫描
 
-#### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
+#### 首次配对新设备时，需要先将头环设置为 _配对_  模式--&gt;蓝灯快闪
 
 ```java
+// Permissions check
+if (!CrimsonPermissions.checkBluetoothFeature(this)) {
+    showMessage("BLE not supported");
+    return;
+}
+
+BluetoothAdapter adapter = ((BluetoothManager)this.getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
+if (adapter == null || !adapter.isEnabled()) {
+    CrimsonPermissions.enableBluetooth(this);
+    return;
+}
+
+// location Permission
+if (!CrimsonPermissions.checkPermissions(this)) {
+    CrimsonPermissions.requestPermissions(this);
+    return;
+}
+```
+
+```java
+// startScan
 showLoadingDialog();
-CrimsonSDK.scanDevices(this, new CrimsonDeviceScanListener() {
+CrimsonSDK.startScan(new CrimsonDeviceScanListener() {
     @Override
-    public void onResult(List<CrimsonDevice> results) {
+    public void onFoundDevices(List<CrimsonDevice> results) {
         dismissLoadingDialog();
-        // TODO: show scan result
+        if(results.size() == 0) showMessage("No headband found");
+
+        devices = results;
+        deviceListAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onError(CrimsonError error) {
         dismissLoadingDialog();
-        if (error.getCode() == CrimsonError.ERROR_PERMISSION_DENIED){
-            // TODO: request location Permission
-        } else if(error.getCode() == CrimsonError.ERROR_BLE_DISABLED) {
-            // TODO: request BLE Permission
-        }
     }
-});
+}, null);
+
+// scanFilters
+final ArrayList<ScanFilter> scanFilters = new ArrayList<>();
+scanFilters.add(new ScanFilter.Builder().setDeviceAddress("xxx-xxx").build());
+
+// stopScan
+CrimsonSDK.stopScan();
 ```
 
 ### Connect 连接
@@ -102,19 +130,17 @@ public abstract class CrimsonDeviceListener {
     public void onMeditation(float meditation){}
     public void onBlink(){}
 }
+```
 
+### Pair 配对
+
+```java
 void onConnectivityChange(int connectivity) {
     if (connectivity == Connectivity.CONNECTED) {
         pair()
     }
 }
-```
 
-### Pair 配对
-
-#### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
-
-```java
 func pair() {
     pairing = true;
     devicePairButton.setText("Pairing");
@@ -213,7 +239,7 @@ IMU_SAMPLE_RATE_104 = 0x40
 ```
 
 ```java
-device.configImu(0x40, error -> {
+device.startImu(0x40, error -> {
     if (error != null) {
         Log.i("startIMU:" + error.getCode(), error.getMessage());
     }
@@ -230,7 +256,8 @@ public void validatePairInfo(CrimsonResponseCallback callback)
 
 public int startDataStream(CrimsonResponseCallback callback)
 public int stopDataStream(CrimsonResponseCallback callback)
-public int configImu(int sampleRate, CrimsonResponseCallback callback)
+public int startIMU(int sampleRate, CrimsonResponseCallback callback)
+public int stopIMU(CrimsonResponseCallback callback)
 
 // @param name length should be 4 ~ 18
 public int setDeviceName(String name, CrimsonResponseCallback callback)
