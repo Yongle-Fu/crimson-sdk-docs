@@ -85,9 +85,7 @@ showLoadingDialog();
 CrimsonSDK.startScan(new CrimsonDeviceScanListener() {
     @Override
     public void onFoundDevices(List<CrimsonDevice> results) {
-        dismissLoadingDialog();
-        if(results.size() == 0) showMessage("No headband found");
-
+        if (!results.isEmpty()) dismissLoadingDialog();
         devices = results;
         deviceListAdapter.notifyDataSetChanged();
     }
@@ -219,9 +217,11 @@ public class BrainWave {
 ### StartEEG 开启传输脑电数据
 
 ```java
-int _ = device.startDataStream(error -> {
+device.startEEGStream(error -> {
     if (error != null) {
-        Log.i("startDataStream:" + error.getCode(), error.getMessage());
+        Log.i(TAG,"startEEGStream:" + error.getCode() + ", message=" + error.getMessage());
+    } else {
+        Log.i(TAG,"startEEGStream success");
     }
 });
 ```
