@@ -105,16 +105,16 @@ public abstract class CrimsonDeviceListener {
     // class CrimsonError
     public void onError(CrimsonError error){}
     public void onDeviceInfoReady(DeviceInfo info){}
-    // batteryLevel 区间在0~100, -1表示未知
-    public void onBatteryLevelChange(int batteryLevel){}
+
     // Enum Connectivity
     public void onConnectivityChange(int connectivity){}
-    
-    // NOTE: invoked after startEEG
     // Enum ContactState
     public void onContactStateChange(int state){}
     // Enum Orientation
     public void onOrientationChange(int orientation){}
+    // batteryLevel 区间在0~100, -1表示未知
+    public void onBatteryLevelChange(int batteryLevel){}
+
     public void onIMUData(IMU data){}
     public void onEEGData(EEG data){}
     public void onBrainWave(BrainWave wave){}
@@ -136,7 +136,7 @@ void onConnectivityChange(int connectivity) {
 func pair() {
     pairing = true;
     devicePairButton.setText("Pairing");
-
+    
     if (device.isInPairingMode()) {
         device.pair(error -> {
             pairing = false;
@@ -269,4 +269,6 @@ public int setSleepIdleTime(int timeSec, CrimsonResponseCallback callback)
 // @param intensity => vibration intensity, 0 ~ 100
 public int setVibrationIntensity(int intensity, CrimsonResponseCallback callback)
 ```
+
+
 
