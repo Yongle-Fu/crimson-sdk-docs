@@ -20,8 +20,8 @@ package.json
 },
 
 "devDependencies": {
-"@mapbox/node-pre-gyp": "^1.0.5",
-"node-gyp": "^8.1.0"
+    "@mapbox/node-pre-gyp": "^1.0.5",
+    "node-gyp": "^8.1.0"
 }
 ```
 
@@ -112,6 +112,9 @@ const exampleListener = new CMSNDeviceListener({
     onError: error => { //CMSNError
         console.error('[ERROR]', error.message);
     },
+    onDeviceInfoReady: (device, deviceInfo) => { //deviceInfo 蓝牙设备信息
+        console.log(device.name, `Device info is ready:`, deviceInfo);
+    },
     onConnectivityChanged: (device, connectivity) => { //Connectivity
         console.log({ message: `[${device.name}] Connectivity changed to: ${CONNECTIVITY(connectivity)}` });
         if (connectivity == CONNECTIVITY.enum('connected')) {
@@ -126,28 +129,27 @@ const exampleListener = new CMSNDeviceListener({
             });
         }
     },
-    onDeviceInfoReady: (device, deviceInfo) => { //deviceInfo
-        console.log(device.name, `Device info is ready:`, deviceInfo);
-    },
-    onContactStateChanged: (device, contactState) => { //ContactState
+    //********************NOTE: invoked after startDataStream*******************
+    onContactStateChanged: (device, contactState) => { //ContactState 佩戴状态
         console.log(device.name, `Contact state changed to:`, CONTACT_STATE(contactState));
     },
-    onOrientationChanged: (device, orientation) => { //Orientation
+    // NOTE：invoked after startIMU
+    onOrientationChanged: (device, orientation) => { //Orientation 佩戴方向
         console.log(device.name, `Orientation changed to:`, ORIENTATION(orientation));
     },
-    onIMUData: (device, imu) => { //IMUData
+    onIMUData: (device, imu) => { //IMUData 陀螺仪数据
         console.log(device.name, `IMU data received:`, imu);
     },
-    onEEGData: (device, eeg) => { //EEGData
+    onEEGData: (device, eeg) => { //EEGData, 脑电EEG数据，默认为每秒回调5次
         console.log(device.name, "EEG data received:", eeg);
     },
-    onBrainWave: (device, stats) => { //BrainWave
+    onBrainWave: (device, stats) => { //BrainWave 脑电频域波段数据
         console.log(device.name, "BrainWave data received:", stats);
     },
-    onAttention: (device, attention) => { //Float
+    onAttention: (device, attention) => { //Float 注意力指数
         console.log(device.name, `Attention:`, attention);
     },
-    onMeditation: (device, meditation) => { //Float
+    onMeditation: (device, meditation) => { //Float 冥想指数
         console.log(device.name, `Meditation:`, meditation);
     },
 });

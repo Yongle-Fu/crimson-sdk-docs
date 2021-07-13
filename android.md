@@ -104,23 +104,23 @@ device.connect(this);
 public abstract class CrimsonDeviceListener {
     // class CrimsonError
     public void onError(CrimsonError error){}
-    public void onDeviceInfoReady(DeviceInfo info){}
-
-    // Enum Connectivity
-    public void onConnectivityChange(int connectivity){}
-    // Enum ContactState
-    public void onContactStateChange(int state){}
-    // Enum Orientation
-    public void onOrientationChange(int orientation){}
+    public void onDeviceInfoReady(DeviceInfo info){} //蓝牙设备信息
     // batteryLevel 区间在0~100, -1表示未知
-    public void onBatteryLevelChange(int batteryLevel){}
-
-    public void onIMUData(IMU data){}
-    public void onEEGData(EEG data){}
-    public void onBrainWave(BrainWave wave){}
-    public void onAttention(float attention){}
-    public void onMeditation(float meditation){}
-    public void onBlink(){}
+    public void onBatteryLevelChange(int batteryLevel){} //电量
+    // Enum Connectivity
+    public void onConnectivityChange(int connectivity){} //连接状态
+    
+    //******************** NOTE: invoked after startEEG *******************
+    // Enum ContactState
+    public void onContactStateChange(int state){} //佩戴状态
+    // Enum Orientation, NOTE: invoked after startIMU
+    public void onOrientationChange(int orientation){} // 佩戴方向
+    public void onIMUData(IMU data){} // 陀螺仪数据
+    public void onEEGData(EEG data){} // 脑电EEG数据
+    public void onBrainWave(BrainWave wave){}    //脑电频域波段数据 
+    public void onAttention(float attention){}   //注意力指数
+    public void onMeditation(float meditation){} //冥想指数
+    public void onBlink(){} // 眨眼事件
 }
 ```
 
@@ -136,7 +136,7 @@ void onConnectivityChange(int connectivity) {
 func pair() {
     pairing = true;
     devicePairButton.setText("Pairing");
-    
+
     if (device.isInPairingMode()) {
         device.pair(error -> {
             pairing = false;
@@ -191,7 +191,7 @@ public class Orientation {
     public static final int UPWARD = 1;   //头环戴正
     public static final int DOWNWARD = 2; //头环戴反
 }
-// EEG
+// EEG, 默认为每秒回调5次
 public class EEG {
     private final int sequenceNumber;
     private final double sampleRate;
@@ -269,6 +269,4 @@ public int setSleepIdleTime(int timeSec, CrimsonResponseCallback callback)
 // @param intensity => vibration intensity, 0 ~ 100
 public int setVibrationIntensity(int intensity, CrimsonResponseCallback callback)
 ```
-
-
 

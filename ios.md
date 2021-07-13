@@ -95,21 +95,22 @@ extension ScanVC: CrimsonDelegate {
 // CrimsonDelegate
 @objc public protocol CrimsonDelegate {
     @objc optional func onError(_ error: CrimsonError)
-    @objc optional func onDeviceInfoReady(_ deviceInfo: DeviceInfo)
-    @objc optional func onSystemInfo(_ systemInfo: SystemInfo)
-
-    @objc optional func onConnectivityChange(_ connectivity: Connectivity)
-    @objc optional func onContactStateChange(_ contactState: ContactState)
-    @objc optional func onOrientationChange(_ orientation: Orientation)
-    // batteryLevel 区间在0~100, -1表示未知
-    @objc optional func onBatteryLevelChange(_ batteryLevel: Int)
-
-    @objc optional func onIMUData(_ imu: IMU)
-    @objc optional func onEEGData(_ eeg: EEG)
-    @objc optional func onBrainWave(_ wave: BrainWave)
-    @objc optional func onBlink()
-    @objc optional func onAttention(_ attention: Float)
-    @objc optional func onMeditation(_ meditation: Float)
+    @objc optional func onDeviceInfoReady(_ deviceInfo: DeviceInfo)//蓝牙设备信息
+    @objc optional func onSystemInfo(_ systemInfo: SystemInfo) //自动休眠信息，震动强度
+    // 电量, batteryLevel 区间在0~100, -1表示未知
+    @objc optional func onBatteryLevelChange(_ batteryLevel: Int) 
+    @objc optional func onConnectivityChange(_ connectivity: Connectivity)//连接状态
+    
+    //******************** NOTE: invoked after startEEG *******************
+    @objc optional func onContactStateChange(_ contactState: ContactState)//佩戴状态
+    // NOTE: invoked after startIMU
+    @objc optional func onOrientationChange(_ orientation: Orientation)//佩戴方向
+    @objc optional func onIMUData(_ imu: IMU) // 陀螺仪数据
+    @objc optional func onEEGData(_ eeg: EEG) // 脑电EEG数据
+    @objc optional func onBrainWave(_ wave: BrainWave) //脑电频域波段数据
+    @objc optional func onAttention(_ attention: Float)  //注意力指数
+    @objc optional func onMeditation(_ meditation: Float)//冥想指数
+    @objc optional func onBlink() // 眨眼事件
 }
 ```
 
@@ -157,7 +158,7 @@ func pair(device: CrimsonDevice) {
     case upward   //头环戴正
     case downward //头环戴反
 }
-// EEG
+// EEG, 默认为每秒回调5次
 @objc public class EEG: NSObject {
     @objc public let sequenceNumber : Int
     @objc public let sampleRate: Float
