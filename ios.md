@@ -186,18 +186,17 @@ device.startEEGStream()
 ### StartIMU 开启传输陀螺仪数据
 
 ```swift
-// IMU SampleRate
+// IMU SampleRate 采样频率
 @objc public enum IMUDataSampleRate: Int, CaseIterable {
     case unused
-    case sr12_5
+    case sr12_5 //推荐使用
     case sr26
     case sr52
-    case sr104
 }
 
 device.delegate = self
 device.startEEGStream()
-device.startIMU(sampleRate: .sr104) { (resp) in
+device.startIMU(sampleRate: .sr12_5) { (resp) in
     if resp.success() {
         self.toast("start imu success")
     } else {

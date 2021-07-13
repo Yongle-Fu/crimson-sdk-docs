@@ -182,19 +182,18 @@ const ORIENTATION = createEnum({
 ### StartIMU 开启传输陀螺仪数据
 
 ```javascript
-// IMU SampleRate
+// IMU SampleRate 采样频率
 const IMU = {
     SAMPLE_RATE: createEnum({
         unused: 0,
-        sr125: 0x10,
+        sr125: 0x10, // 推荐使用
         sr26: 0x20,
-        sr52: 0x30,
-        sr104: 0x40,
+        sr52: 0x30
     }),
 };
 
 device.listener = exampleListener;
-device.startIMU(IMU.SAMPLE_RATE.enum('sr104'));
+device.startIMU(IMU.SAMPLE_RATE.enum('sr125'));
 ```
 
 ### More

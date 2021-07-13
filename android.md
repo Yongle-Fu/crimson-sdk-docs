@@ -223,17 +223,17 @@ device.startEEGStream(error -> {
 ### StartIMU 开启传输陀螺仪数据
 
 ```c
-typedef enum { 
-IMU_SAMPLE_RATE_UNUSED = 0, 
-IMU_SAMPLE_RATE_12_5 = 0x10, 
-IMU_SAMPLE_RATE_26 = 0x20, 
-IMU_SAMPLE_RATE_52 = 0x30, 
-IMU_SAMPLE_RATE_104 = 0x40
-} IMUSampleRate;
+// IMU SampleRate 采样频率
+public class IMUSampleRate {
+    public final static int UNUSED = 0; // stop imu stream
+    public final static int SR12_5 = 0x10; // 推荐使用
+    public final static int SR26 = 0x20;
+    public final static int SR52 = 0x30;
+}
 ```
 
 ```java
-device.startImu(0x40, error -> {
+device.startImu(IMUSampleRate.SR12_5, error -> {
     if (error != null) {
         Log.i("startIMU:" + error.getCode(), error.getMessage());
     }
