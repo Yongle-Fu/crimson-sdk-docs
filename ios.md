@@ -2,9 +2,9 @@
 
 ## Download
 
-[下载SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/ios/CrimsonSDK.xcframework.zip)
+[下载SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/ios/CrimsonSDK.xcframework)
 
-[下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/ios/CrimsonSDKExample.zip)
+[下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/ios/CrimsonSDKExample.zip)
 
 [演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/example.mp4)
 
@@ -25,7 +25,7 @@ platform :ios, '10.0'
 
 use_frameworks!
 
-pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/ios/CrimsonSDK.podspec'
+pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/ios/CrimsonSDK.podspec'
 ```
 
 ### 手动集成
@@ -208,6 +208,10 @@ device.startIMU(sampleRate: .sr12_5) { (resp) in
 ### More
 
 ```swift
+// 设置日志级别，默认为INFO
+CrimsonSDK.setLogLevel(LOG_LEVEL_ERROR)
+CrimsonSDK.setLogLevel(LOG_LEVEL_INFO)
+
 public func connect()
 public func disconnect()
 public func pair(onResponse: @escaping CrimsonRespCallback)

@@ -2,7 +2,7 @@
 
 ## Download
 
-[下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/android/android_example.zip)
+[下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/android/android_example.zip)
 
 [演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/android/example.mp4)
 
@@ -27,8 +27,7 @@ repositories {
 // app/build.gradle
 dependencies {
     // import crimson-sdk from maven
-    api 'tech.brainco:crimsonjna:1.0.1+2'
-    api 'tech.brainco:crimsonsdk:1.0.1+2'
+    api 'tech.brainco:crimsonsdk:1.0.2'
 }
 
 // manifest
@@ -226,14 +225,12 @@ device.startEEGStream(error -> {
 // IMU SampleRate 采样频率
 public class IMUSampleRate {
     public final static int UNUSED = 0; // stop imu stream
-    public final static int SR12_5 = 0x10; // 推荐使用
-    public final static int SR26 = 0x20;
-    public final static int SR52 = 0x30;
+    public final static int SR12_5 = 0x10; // 默认使用
 }
 ```
 
 ```java
-device.startImu(IMUSampleRate.SR12_5, error -> {
+device.startIMU(error -> {
     if (error != null) {
         Log.i("startIMU:" + error.getCode(), error.getMessage());
     }
@@ -243,6 +240,10 @@ device.startImu(IMUSampleRate.SR12_5, error -> {
 ### More
 
 ```java
+// 设置日志级别，默认为INFO
+CrimsonSDK.setLogLevel(CrimsonSDK.LogLevel.ERROR);
+public static void setLogLevel(int level)
+
 public void connect(@NonNull Context context)
 public void disconnect()
 public void pair(CrimsonResponseCallback callback)

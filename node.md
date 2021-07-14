@@ -20,8 +20,8 @@ package.json
 },
 
 "devDependencies": {
-    "@mapbox/node-pre-gyp": "^1.0.5",
-    "node-gyp": "^8.1.0"
+"@mapbox/node-pre-gyp": "^1.0.5",
+"node-gyp": "^8.1.0"
 }
 ```
 
@@ -112,9 +112,6 @@ const exampleListener = new CMSNDeviceListener({
     onError: error => { //CMSNError
         console.error('[ERROR]', error.message);
     },
-    onDeviceInfoReady: (device, deviceInfo) => { //deviceInfo 蓝牙设备信息
-        console.log(device.name, `Device info is ready:`, deviceInfo);
-    },
     onConnectivityChanged: (device, connectivity) => { //Connectivity
         console.log({ message: `[${device.name}] Connectivity changed to: ${CONNECTIVITY(connectivity)}` });
         if (connectivity == CONNECTIVITY.enum('connected')) {
@@ -129,27 +126,28 @@ const exampleListener = new CMSNDeviceListener({
             });
         }
     },
-    //********************NOTE: invoked after startDataStream*******************
-    onContactStateChanged: (device, contactState) => { //ContactState 佩戴状态
+    onDeviceInfoReady: (device, deviceInfo) => { //deviceInfo
+        console.log(device.name, `Device info is ready:`, deviceInfo);
+    },
+    onContactStateChanged: (device, contactState) => { //ContactState
         console.log(device.name, `Contact state changed to:`, CONTACT_STATE(contactState));
     },
-    // NOTE：invoked after startIMU
-    onOrientationChanged: (device, orientation) => { //Orientation 佩戴方向
+    onOrientationChanged: (device, orientation) => { //Orientation
         console.log(device.name, `Orientation changed to:`, ORIENTATION(orientation));
     },
-    onIMUData: (device, imu) => { //IMUData 陀螺仪数据
+    onIMUData: (device, imu) => { //IMUData
         console.log(device.name, `IMU data received:`, imu);
     },
-    onEEGData: (device, eeg) => { //EEGData, 脑电EEG数据，默认为每秒回调5次
+    onEEGData: (device, eeg) => { //EEGData
         console.log(device.name, "EEG data received:", eeg);
     },
-    onBrainWave: (device, stats) => { //BrainWave 脑电频域波段数据
+    onBrainWave: (device, stats) => { //BrainWave
         console.log(device.name, "BrainWave data received:", stats);
     },
-    onAttention: (device, attention) => { //Float 注意力指数
+    onAttention: (device, attention) => { //Float
         console.log(device.name, `Attention:`, attention);
     },
-    onMeditation: (device, meditation) => { //Float 冥想指数
+    onMeditation: (device, meditation) => { //Float
         console.log(device.name, `Meditation:`, meditation);
     },
 });
@@ -182,18 +180,19 @@ const ORIENTATION = createEnum({
 ### StartIMU 开启传输陀螺仪数据
 
 ```javascript
-// IMU SampleRate 采样频率
+// IMU SampleRate
 const IMU = {
     SAMPLE_RATE: createEnum({
         unused: 0,
-        sr125: 0x10, // 推荐使用
+        sr125: 0x10,
         sr26: 0x20,
-        sr52: 0x30
+        sr52: 0x30,
+        sr104: 0x40,
     }),
 };
 
 device.listener = exampleListener;
-device.startIMU(IMU.SAMPLE_RATE.enum('sr125'));
+device.startIMU(IMU.SAMPLE_RATE.enum('sr104'));
 ```
 
 ### More
