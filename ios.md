@@ -174,6 +174,61 @@ func pair(device: CrimsonDevice) {
     @objc public let highBeta : Double
     @objc public let gamma : Double
 }
+
+@objc public enum CrimsonErrorCode: Int32{
+    case none = 0
+    case unknown = -1
+    case messageBuildingFailed = -2
+    case paramsError = -3
+    
+    case deviceNotConnected = -160
+    case deviceUuidUnavailable = -196
+}
+
+
+@objc public class CrimsonError: NSObject {
+    @objc public let code: CrimsonErrorCode
+    @objc public let message: String
+    
+    init(code:CrimsonErrorCode) {
+        self.code = code;
+        switch code {
+            case .none:
+                message = "Success"
+            case .unknown:
+                message = "Unknown error" //未知错误
+            case .messageBuildingFailed:
+                message = "Message building failed" //发送消息构建失败
+            case .deviceNotConnected:
+                message = "Device not connected" //设备不可用
+            case .deviceUuidUnavailable:
+                message = "Failed to obtain iOS device UUID" //获取idfv失败
+            default:
+                message = "Unknown error case" //未知code
+        }
+    }
+}
+
+//SysConfig命令，固件返回error
+@objc public enum SysConfigErrorCode: Int32 {
+    case none = 0
+    case unknown = 1 //未知错误
+    case otaFailedLowPower = 2 //低电量进入OTA失败
+    case pairError = 3 //配对失败
+    case validatePairInfo = 4 //检验配对信息失败
+    case internalStorageError = 5  //内部存储错误
+}
+
+@objc public class SysConfigError: NSObject {
+    @objc public let code: SysConfigErrorCode
+    @objc public let message: String
+
+    init(code:SysConfigErrorCode){
+        self.code = code
+        self.message = String(cString: sys_config_err_code_to_msg(code.rawValue))
+        super.init()
+    }
+}
 ```
 
 ### StartEEG 开启传输脑电数据

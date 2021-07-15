@@ -205,48 +205,6 @@ public class BrainWave {
     private final double highBeta;
     private final double gamma;
 }
-
-public class CrimsonError {
-    public static final int ERROR_NONE = 0;
-    public static final int ERROR_UNKNOWN = -1;
-    public static final int ERROR_SCAN_FAILED_INTERNAL = -64;
-    public static final int ERROR_SCAN_FEATURE_UNSUPPORTED = -65;
-    public static final int ERROR_PERMISSION_DENIED = -128;
-    public static final int ERROR_DEVICE_NOT_CONNECTED = -160;
-    public static final int ERROR_RESPONSE_TIMEOUT = -1001;
-    
-    private int code;
-    private String message;
-
-    CrimsonError(int code) {
-        this.code = code;
-        switch(code) {
-            case ERROR_NONE:
-                message = "Success";
-                break;
-            case ERROR_UNKNOWN:
-                message = "Unknown error"; //未知错误
-                break;
-            case ERROR_SCAN_FAILED_INTERNAL:
-                message = "Bluetooth LE scan failed internally"; //开启扫描失败
-                break;
-            case ERROR_SCAN_FEATURE_UNSUPPORTED:
-                message = "Bluetooth LE scan feature is not supported for this device"; //开启扫描失败
-                break;
-            case ERROR_PERMISSION_DENIED:
-                message = "Bluetooth or location permissions could have been denied"; //蓝牙或定位权限未打开
-                break;
-            case ERROR_DEVICE_NOT_CONNECTED:
-                message = "Device not connected"; //设备不可用
-                break;
-            case ERROR_RESPONSE_TIMEOUT:
-                message = "response timeout"; //响应超时
-                break;
-            default:
-                message = "Unknown error:" + code; //未知code
-        }
-    }
-}
 ```
 
 ### StartEEG 开启传输脑电数据
