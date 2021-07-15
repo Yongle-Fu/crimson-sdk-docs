@@ -209,20 +209,43 @@ public class BrainWave {
 public class CrimsonError {
     public static final int ERROR_NONE = 0;
     public static final int ERROR_UNKNOWN = -1;
-    public static final int ERROR_MESSAGE_BUILDING_FAILED = -2;
-
     public static final int ERROR_SCAN_FAILED_INTERNAL = -64;
     public static final int ERROR_SCAN_FEATURE_UNSUPPORTED = -65;
-    public static final int ERROR_MAIN_SERVICE_UNSUPPORTED = -66;
-
-    public static final int ERROR_PERMISSION_DENIED = -128;     //CMSN_ERROR_BLE_DEVICE_UNREACHABLE
-    public static final int ERROR_BLE_DISABLED = -129;
-    public static final int ERROR_BLE_UNAVAILABLE = -130;
+    public static final int ERROR_PERMISSION_DENIED = -128;
     public static final int ERROR_DEVICE_NOT_CONNECTED = -160;
-
-    public static final int ERROR_DEVICE_BUSY = -192;
-    public static final int ERROR_OTA_FAILED_LOW_POWER = -196;
     public static final int ERROR_RESPONSE_TIMEOUT = -1001;
+    
+    private int code;
+    private String message;
+
+    CrimsonError(int code) {
+        this.code = code;
+        switch(code) {
+            case ERROR_NONE:
+                message = "Success";
+                break;
+            case ERROR_UNKNOWN:
+                message = "Unknown error"; //未知错误
+                break;
+            case ERROR_SCAN_FAILED_INTERNAL:
+                message = "Bluetooth LE scan failed internally"; //开启扫描失败
+                break;
+            case ERROR_SCAN_FEATURE_UNSUPPORTED:
+                message = "Bluetooth LE scan feature is not supported for this device"; //开启扫描失败
+                break;
+            case ERROR_PERMISSION_DENIED:
+                message = "Bluetooth or location permissions could have been denied"; //蓝牙或定位权限未打开
+                break;
+            case ERROR_DEVICE_NOT_CONNECTED:
+                message = "Device not connected"; //设备不可用
+                break;
+            case ERROR_RESPONSE_TIMEOUT:
+                message = "response timeout"; //响应超时
+                break;
+            default:
+                message = "Unknown error:" + code; //未知code
+        }
+    }
 }
 ```
 
