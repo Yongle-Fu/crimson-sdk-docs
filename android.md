@@ -71,22 +71,22 @@ if (!CrimsonPermissions.checkPermissions(this)) {
 // startScan 开启扫描
 showLoadingDialog();
 CrimsonSDK.startScan(this, new CrimsonDeviceScanListener() {
+    /*
+    param: state
+    BluetoothAdapter.STATE_OFF:
+    @IntDef(prefix = { "STATE_" }, value = {
+            STATE_OFF,
+            STATE_TURNING_ON,
+            STATE_ON,
+            STATE_TURNING_OFF,
+            STATE_BLE_TURNING_ON,
+            STATE_BLE_ON,
+            STATE_BLE_TURNING_OFF
+    }) 
+*/
     @Override
     public void onBluetoothAdapterStateChange(int state) {
         Log.i(TAG, "BluetoothAdapter state=" + state);
-        /*
-        state:
-    
-        BluetoothAdapter.STATE_OFF:
-        @IntDef(prefix = { "STATE_" }, value = {
-                STATE_OFF,
-                STATE_TURNING_ON,
-                STATE_ON,
-                STATE_TURNING_OFF,
-                STATE_BLE_TURNING_ON,
-                STATE_BLE_ON,
-                STATE_BLE_TURNING_OFF
-        }) */
     }
 
     @Override
