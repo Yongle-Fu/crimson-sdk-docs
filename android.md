@@ -205,6 +205,25 @@ public class BrainWave {
     private final double highBeta;
     private final double gamma;
 }
+
+public class CrimsonError {
+    public static final int ERROR_NONE = 0;
+    public static final int ERROR_UNKNOWN = -1;
+    public static final int ERROR_MESSAGE_BUILDING_FAILED = -2;
+
+    public static final int ERROR_SCAN_FAILED_INTERNAL = -64;
+    public static final int ERROR_SCAN_FEATURE_UNSUPPORTED = -65;
+    public static final int ERROR_MAIN_SERVICE_UNSUPPORTED = -66;
+
+    public static final int ERROR_PERMISSION_DENIED = -128;     //CMSN_ERROR_BLE_DEVICE_UNREACHABLE
+    public static final int ERROR_BLE_DISABLED = -129;
+    public static final int ERROR_BLE_UNAVAILABLE = -130;
+    public static final int ERROR_DEVICE_NOT_CONNECTED = -160;
+
+    public static final int ERROR_DEVICE_BUSY = -192;
+    public static final int ERROR_OTA_FAILED_LOW_POWER = -196;
+    public static final int ERROR_RESPONSE_TIMEOUT = -1001;
+}
 ```
 
 ### StartEEG 开启传输脑电数据
