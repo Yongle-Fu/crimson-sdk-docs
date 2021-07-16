@@ -27,7 +27,7 @@ repositories {
 // app/build.gradle
 dependencies {
     // import crimson-sdk from maven
-    api 'tech.brainco:crimsonsdk:1.0.2+2'
+    api 'tech.brainco:crimsonsdk:1.0.2+3'
 }
 
 // manifest
@@ -68,9 +68,27 @@ if (!CrimsonPermissions.checkPermissions(this)) {
 ```
 
 ```java
+// 蓝牙状态监听
+public class ScanActivity extends BaseActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        CrimsonSDK.setLogLevel(CrimsonSDK.LogLevel.INFO);
+        CrimsonSDK.registerBLEStateReceiver(this); //注册蓝牙状态监听
+    }
+    
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        CrimsonSDK.unregisterBLEStateReceiver(this);//移除注册蓝牙状态监听
+    }
+}
+
 // startScan 开启扫描
 showLoadingDialog();
-CrimsonSDK.startScan(this, new CrimsonDeviceScanListener() {
+CrimsonSDK.startScan(new CrimsonDeviceScanListener() {
     /*
     param: state
     BluetoothAdapter.STATE_OFF:
@@ -86,8 +104,19 @@ CrimsonSDK.startScan(this, new CrimsonDeviceScanListener() {
     */
     @Override
     public void onBluetoothAdapterStateChange(int state) {
-        Log.i(TAG, "BluetoothAdapter state=" + state);
-    }
+                Log.i(TAG, "BluetoothAdapter state=" + state);
+                switch (state) {
+                    case BluetoothAdapter.STATE_ON:
+                        // restart scan
+                        scanDevices();
+                        break;
+                    case BluetoothAdapter.STATE_OFF:
+                        CrimsonSDK.stopScan();
+                        break;
+                    default:
+                        break;
+                }
+            }
 
     @Override
     public void onFoundDevices(List<CrimsonDevice> results) {
