@@ -27,7 +27,7 @@ repositories {
 // app/build.gradle
 dependencies {
     // import crimson-sdk from maven
-    api 'tech.brainco:crimsonsdk:1.0.2+1'
+    api 'tech.brainco:crimsonsdk:1.0.2+2'
 }
 
 // manifest
