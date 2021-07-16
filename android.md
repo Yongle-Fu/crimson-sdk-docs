@@ -83,7 +83,7 @@ CrimsonSDK.startScan(this, new CrimsonDeviceScanListener() {
             STATE_BLE_ON,
             STATE_BLE_TURNING_OFF
     }) 
-*/
+    */
     @Override
     public void onBluetoothAdapterStateChange(int state) {
         Log.i(TAG, "BluetoothAdapter state=" + state);

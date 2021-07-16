@@ -246,12 +246,14 @@ device.startEEGStream()
 // IMU SampleRate 采样频率
 @objc public enum IMUDataSampleRate: Int, CaseIterable {
     case unused
-    case sr12_5 //默认使用
+    case sr12_5 //推荐使用
+    case sr26
+    case sr52
 }
 
 device.delegate = self
 device.startEEGStream()
-device.startIMU() { (resp) in
+device.startIMU(sampleRate: .sr12_5) { (resp) in
     if resp.success() {
         self.toast("start imu success")
     } else {
