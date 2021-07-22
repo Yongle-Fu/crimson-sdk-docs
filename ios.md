@@ -43,6 +43,8 @@ pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.co
 ```swift
 <key>NSBluetoothAlwaysUsageDescription</key>
 <string>APP需要通过蓝牙功能连接头环设备</string>
+
+<--蓝牙后台访问权限-->
 <key>UIBackgroundModes</key>
 <array>
 <string>bluetooth-central</string>
@@ -246,14 +248,12 @@ device.startEEGStream()
 // IMU SampleRate 采样频率
 @objc public enum IMUDataSampleRate: Int, CaseIterable {
     case unused
-    case sr12_5 //推荐使用
-    case sr26
-    case sr52
+    case sr12_5 //默认使用
 }
 
 device.delegate = self
 device.startEEGStream()
-device.startIMU(sampleRate: .sr12_5) { (resp) in
+device.startIMU() { (resp) in
     if resp.success() {
         self.toast("start imu success")
     } else {
