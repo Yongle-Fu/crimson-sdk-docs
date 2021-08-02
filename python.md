@@ -12,7 +12,7 @@
 
 ## Usage
 
-```shell
+```text
 pip3 install -r requirements.txt
 python3 gui.py //or python3 example.py
 ```
@@ -52,11 +52,16 @@ class DeviceListener(CMSNDeviceListener):
     def on_connectivity_change(self, connectivity):
         print("Connectivity:" + connectivity.name)
         if connectivity == Connectivity.connected:
+            // 首次配对新设备时，需要先将头环设置为配对模式-->蓝灯快闪，然后开始扫描
             _target_device.pair(on_pair_response)
+            // 开启EEG数据流
+            _target_device.start_eeg_stream()
 
+    //******************** NOTE: invoked after startEEG *******************
     def on_contact_state_change(self, contact_state):
         print("Contact state:" + contact_state.name)
 
+    // NOTE: invoked after startIMU
     def on_orientation_change(self, orientation):
         print("orientation:" + orientation.name)
 
@@ -102,5 +107,26 @@ class Orientation(IntEnum):
     unknown = 0
     upward = 1   //头环戴正
     downward = 2 //头环戴反
+    
+// EEG    
+class EEGData:
+    sequence_num = None
+    sample_rate = None
+    eeg_data = None    
+
+// 脑电频域波段能量        
+class BrainWave:
+    delta = 0
+    theta = 0
+    alpha = 0
+    low_beta = 0
+    high_beta = 0
+    gamma = 0    
+    
+class IMUData:
+    acc_data = None
+    gyro_data = None
+    euler_angle_data = None
+    sample_rate = None    
 ```
 
