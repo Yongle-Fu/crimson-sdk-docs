@@ -12,3 +12,95 @@
 
 ## Usage
 
+```shell
+pip3 install -r requirements.txt
+python3 gui.py //or python3 example.py
+```
+
+### Scan 扫描
+
+#### 首次配对新设备时，需要先将头环设置为 _配对_  模式--&gt;蓝灯快闪
+
+{% page-ref page="faq.md" %}
+
+```python
+CMSNSDK.start_device_scan(on_found_device)
+```
+
+### Connect 连接
+
+```python
+print("Stop scanning for more devices")
+CMSNSDK.stop_device_scan()
+
+_target_device = device
+_target_device.set_listener(DeviceListener())
+_target_device.connect()
+```
+
+### Disconnect 断开连接
+
+```python
+// disconnect device
+_target_device.disconnect()
+```
+
+### CMSNDeviceListener
+
+```python
+class DeviceListener(CMSNDeviceListener):
+    def on_connectivity_change(self, connectivity):
+        print("Connectivity:" + connectivity.name)
+        if connectivity == Connectivity.connected:
+            _target_device.pair(on_pair_response)
+
+    def on_contact_state_change(self, contact_state):
+        print("Contact state:" + contact_state.name)
+
+    def on_orientation_change(self, orientation):
+        print("orientation:" + orientation.name)
+
+    def on_imu_data(self, imu_data):
+        print("IMU Data:")
+        print(imu_data)    
+
+    def on_eeg_data(self, eeg_data):
+        if eeg_data.signal_type == AFEDataSignalType.lead_off_detection:
+            print("Received lead off detection signal, skipping the packet.")
+            return
+        print("EEG Data:")
+        print(eeg_data)
+
+    def on_brain_wave(self, brain_wave):
+        print("Alpha:" + str(brain_wave.alpha))
+
+    def on_attention(self, attention):
+        print("Attention: " + str(attention))
+
+    def on_meditation(self, meditation):
+        print("Meditation: " + str(meditation))
+```
+
+### Model
+
+```python
+// 头环连接状态
+class Connectivity(IntEnum):
+    connecting = 0
+    connected = 1
+    disconnecting = 2
+    disconnected = 3
+
+// 佩戴状态，电极与皮肤接触良好
+class ContactState(IntEnum):
+    unknown = 0
+    contact = 1    //佩戴好
+    no_contact = 2 //未戴好
+
+// 佩戴方向，检测是否佩戴反
+class Orientation(IntEnum):
+    unknown = 0
+    upward = 1   //头环戴正
+    downward = 2 //头环戴反
+```
+
