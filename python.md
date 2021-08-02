@@ -6,9 +6,9 @@
 
 ## Requirement
 
-* Python 3.0+
-* Mac 10.15+
-* Windows 10+
+* Python 3.0 or later
+* Mac 10.15 or later
+* Windows 10 build 10.0.15063 or later
 
 ## Usage
 

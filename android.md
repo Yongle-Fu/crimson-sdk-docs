@@ -8,7 +8,7 @@
 
 ## Requirement
 
-Android 6.0+
+Android 6.0 or later
 
 ## Integration
 
