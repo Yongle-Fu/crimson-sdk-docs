@@ -1,8 +1,8 @@
-# CrimsonSDK NodeJS
+# NodeJS
 
 ## Download
 
-[下载SDK及Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/node/node.zip)
+[下载SDK及Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/node/node.zip)
 
 ## Requirement
 
@@ -14,27 +14,55 @@
 
 package.json
 
-```json
-"devDependencies": {
-    "@mapbox/node-pre-gyp": "^1.0.5",
-    "node-gyp": "^8.1.0"
-}
-
+```javascript
 "dependencies": {
-    "debug": "^4.3.2",
-    "cmsn-noble": "3.0.4",
-
-    // nrf dongle 依赖库
-    // "nrf-ble-usb": "2.5.6",
-    // "pc-ble-driver-js": "2.7.2"
+    "cmsn-noble": "^3.0.3"
 },
+
+"devDependencies": {
+"@mapbox/node-pre-gyp": "^1.0.5",
+"node-gyp": "^8.1.0"
+}
+```
+
+### when npm install, will download prebuilt lib if exists
+
+* noble-v3.0.3-electron-v7.3-darwin-x64.tar.gz
+* noble-v3.0.3-electron-v7.3-win32-x64.tar.gz
+* noble-v3.0.3-node-v72-darwin-x64.tar.gz
+* noble-v3.0.3-node-v72-win32-x64.tar.gz
+* noble-v3.0.3-node-v83-darwin-x64.tar.gz
+* noble-v3.0.3-node-v83-win32-x64.tar.gz
+
+### electron
+
+#### .npmrc
+
+```text
+runtime = electron
+target = 7.3.3
+npm_config_disturl=https://electronjs.org/headers
+```
+
+#### electron-builder.yml
+
+```yaml
+extraResources:
+  - from: "node_modules"
+    to: "node_modules"
+    filter:
+      - "cmsn-noble/**/*"
+      - "bindings/**/*"
+      - "napi-thread-safe-callback/**/*"
+      - "node-addon-api/**/*"
+      - "file-uri-to-path/**/*"
 ```
 
 ## Usage
 
 ### Init
 
-```js
+```javascript
 let cmsnSDK;
 (async function main() {
     console.log('------------- Example Main -------------');
@@ -48,9 +76,11 @@ let cmsnSDK;
 
 ### Scan 扫描
 
-#### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
+#### 首次配对新设备时，需要先将头环设置为 _配对_  模式--&gt;蓝灯快闪
 
-```js
+{% page-ref page="faq.md" %}
+
+```javascript
 cmsnSDK.startScan(async device => { 
     console.log(`found device, [${p.name}] ${p.address}`);
 });
@@ -58,7 +88,7 @@ cmsnSDK.startScan(async device => {
 
 ### Connect 连接
 
-```js
+```javascript
 await cmsnSDK.stopScan();
 await utils.sleep(500);
 device.listener = exampleListener;
@@ -67,7 +97,7 @@ await device.connect();
 
 ### Disconnect 断开连接
 
-```js
+```javascript
 // disconnect device
 await device.disconnect();
 
@@ -77,7 +107,7 @@ CrimsonSDK.dispose();
 
 ### CrimsonDeviceListener
 
-```js
+```javascript
 const exampleListener = new CMSNDeviceListener({
     onError: error => { //CMSNError
         console.error('[ERROR]', error.message);
@@ -123,9 +153,9 @@ const exampleListener = new CMSNDeviceListener({
 });
 ```
 
-### ENUM
+### Model
 
-```js
+```javascript
 // 头环连接状态
 const CONNECTIVITY = createEnum({
     connecting: 0,
@@ -149,7 +179,7 @@ const ORIENTATION = createEnum({
 
 ### StartIMU 开启传输陀螺仪数据
 
-```js
+```javascript
 // IMU SampleRate
 const IMU = {
     SAMPLE_RATE: createEnum({
@@ -167,7 +197,7 @@ device.startIMU(IMU.SAMPLE_RATE.enum('sr104'));
 
 ### More
 
-```js
+```javascript
 class CMSNDevice
     id, 
     name, 
@@ -192,4 +222,3 @@ class CMSNDevice
 }
 ```
 
-## TODO Electron Docs
