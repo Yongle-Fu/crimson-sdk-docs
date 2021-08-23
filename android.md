@@ -2,7 +2,7 @@
 
 ## Download
 
-[下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/android/android_example.zip)
+[下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/android/android_example.zip)
 
 [演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/android/example.mp4)
 
@@ -27,7 +27,7 @@ repositories {
 // app/build.gradle
 dependencies {
     // import crimson-sdk from maven
-    api 'tech.brainco:crimsonsdk:1.0.2+3'
+    api 'tech.brainco:crimsonsdk:1.0.3'
 }
 
 // manifest
