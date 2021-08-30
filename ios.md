@@ -25,7 +25,7 @@ platform :ios, '10.0'
 
 use_frameworks!
 
-pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/ios/CrimsonSDK.podspec'
+pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/ios/CrimsonSDK.podspec'
 ```
 
 ### 手动集成

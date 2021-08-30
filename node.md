@@ -6,9 +6,11 @@
 
 ## Requirement
 
-* NodeJS 12.18.x or later
+* BLE 4.2 or later
+* NodeJS 12.10.x or later
 * Mac 10.15 or later
 * Windows 10 build 10.0.15063 or later
+* Linux
 
 ## Integration
 
@@ -22,7 +24,7 @@ package.json
 
 "dependencies": {
     "debug": "^4.3.2",
-    "cmsn-noble": "3.0.7",
+    "cmsn-noble": "3.1.4",
 },
 ```
 
@@ -33,13 +35,28 @@ package.json
 ```javascript
 let cmsnSDK;
 (async function main() {
-    console.log('------------- Example Main -------------');
-    const useDongle = false;
-    cmsnSDK = await CrimsonSDK.init(useDongle);
-    if (exampleListener.onError) {
-        cmsnSDK.on('error', error => exampleListener.onError(error));
-    }
+    debug.enable('example:info');
+    logI('------------- Example Main -------------');
+    const useDongle = false; //nRF Dongle
+    const logLevel = CMSNLogLevel.enum('info'); //info/error/warn
+    cmsnSDK = await CrimsonSDK.init(useDongle, logLevel);
+
+    cmsnSDK.on('error', e => logI(e));
+    cmsnSDK.on('onAdapterAvailable', async () => await startScan());
+    if (cmsnSDK.adapter.available) await startScan();
 })();
+```
+
+### Dispose
+
+```javascript
+// when exit application, disconnect all devices & clean resources
+process.on('SIGINT', async () => {
+    logI({ message: `SIGINT signal received.` });
+    await CrimsonSDK.dispose();
+    logI('End program');
+    process.exit(0);
+});
 ```
 
 ### Scan 扫描
@@ -47,16 +64,36 @@ let cmsnSDK;
 #### 首次配对新设备时，需要先将头环设置为配对模式--&gt;蓝灯快闪
 
 ```javascript
-cmsnSDK.startScan(async device => { 
-    console.log(`found device, [${p.name}] ${p.address}`);
-});
+async function startScan() {
+    const targetDevices = new Map(); // (uuid: string, device)
+    /// NOTE: user prompt, switch to pairing mode when connect crimson first time
+    logI("Scanning for BLE devices");
+    cmsnSDK.startScan(async device => {
+        logI('found device', device.name);
+        if (utils.array_contains(TARGET_DEVICE_NAME_ARRAY, device.name)) {
+            targetDevices.set(device.id, device);
+            logI(`targetDevices.size=${targetDevices.size}`);
+        }
+
+        if (targetDevices.size >= TARGET_DEVICE_COUNT) {
+            await cmsnSDK.stopScan();
+            await utils.sleep(500);
+        
+            for (let device of targetDevices.values()) {
+                device.listener = exampleListener;
+                await device.connect();
+                // data stream listen, default return attention only
+                // attention, meditation, socialEngagement
+                // device.setDataSubscription(true, false, false);
+            }
+        }
+    });
+}
 ```
 
 ### Connect 连接
 
 ```javascript
-await cmsnSDK.stopScan();
-await utils.sleep(500);
 device.listener = exampleListener;
 await device.connect();
 ```
@@ -66,9 +103,6 @@ await device.connect();
 ```javascript
 // disconnect device
 await device.disconnect();
-
-// when exit application, disconnect all devices & clean resources
-CrimsonSDK.dispose();
 ```
 
 ### CrimsonDeviceListener

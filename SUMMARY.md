@@ -7,5 +7,6 @@
 * [iOS](ios.md)
 * [Android](android.md)
 * [NodeJS](node.md)
+* [Electron](electron.md)
 * [Python](python.md)
 
