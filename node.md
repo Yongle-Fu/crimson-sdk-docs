@@ -222,5 +222,3 @@ class CMSNDevice
 }
 ```
 
-## TODO Electron Docs
-

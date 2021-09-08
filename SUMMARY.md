@@ -9,4 +9,5 @@
 * [NodeJS](node.md)
 * [Electron](node_electron.md)
 * [Python](python.md)
+* [C](c.md)
 
