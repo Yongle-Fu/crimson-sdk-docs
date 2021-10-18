@@ -37,6 +37,11 @@ dependencies {
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 </manifest>
+
+// proguard-rules.pro
+-dontwarn java.awt.*
+-keep class com.sun.jna.* { *; }
+-keepclassmembers class * extends com.sun.jna.* { public *; }
 ```
 
 ## Usage
