@@ -25,7 +25,7 @@ platform :ios, '10.0'
 
 use_frameworks!
 
-pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/ios/CrimsonSDK.podspec'
+pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/ios/CrimsonSDK.podspec'
 ```
 
 ### 手动集成
@@ -141,7 +141,34 @@ func pair(device: CrimsonDevice) {
 ```
 
 ### OTA
-[OTA](https://github.com/NordicSemiconductor/IOS-DFU-Library)
+
+```swift
+public class CrimsonOTA {
+    public static var latestVersion = ""
+    public static var url = ""
+    public static var desc = ""
+    public static var descEN = ""
+}
+
+boolean ret = device.isNewFirmwareAvailable();
+print("isNewFirmwareAvailable=\(ret)");
+print("latestVersion=\(CrimsonOTA.latestVersion)");
+print("desc=\(CrimsonOTA.desc)");
+
+device.startDfu(self)
+extension DFUViewControler: CrimsonOtaDelegate {
+    func onSuccess() {
+        logI("ota Success")
+    }
+    func onFailure(_ error: CrimsonError?) {
+        if error != nil { logI("ota Failure, error=\(error!.message)") }
+    }
+    func onProgress(_ progress: Int) {
+        logI("ota progress=\(progress)")
+    }
+}
+```
+
 ### Model
 
 ```swift
@@ -189,6 +216,9 @@ func pair(device: CrimsonDevice) {
     
     case deviceNotConnected = -160
     case deviceUuidUnavailable = -196
+
+    case otaDownload = -200
+    case otaDfu = -20
 }
 
 
