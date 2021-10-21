@@ -27,7 +27,7 @@ repositories {
 // app/build.gradle
 dependencies {
     // import crimson-sdk from maven
-    api 'tech.brainco:crimsonsdk:1.0.3'
+    api 'tech.brainco:crimsonsdk:1.0.3+3'
 }
 
 // manifest
@@ -330,6 +330,38 @@ public class IMUSampleRate {
 device.startIMU(error -> {
     if (error != null) {
         Log.i("startIMU:" + error.getCode(), error.getMessage());
+    }
+});
+```
+### OTA
+
+```java
+public class CrimsonOTA {
+    public static String latestVersion;
+    public static String url;
+    public static String desc;
+    public static String descEN;
+}
+
+boolean ret = device.isNewFirmwareAvailable();
+Log.i(TAG, "isNewFirmwareAvailable=" + ret);
+Log.i(TAG, "latestVersion=" + CrimsonOTA.latestVersion);
+Log.i(TAG, "desc=" + CrimsonOTA.desc);
+
+device.startDfu(this, new DFUCallback() {
+    @Override
+    public void onSuccess() {
+        Log.i(TAG, "onSuccess");
+    }
+
+    @Override
+    public void onFailure(Exception e) {
+        Log.i(TAG, e.getMessage());
+    }
+
+    @Override
+    public void onProgress(int progress) {
+        Log.i(TAG, "progress=" + progress);
     }
 });
 ```

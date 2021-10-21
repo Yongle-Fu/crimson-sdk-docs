@@ -140,6 +140,8 @@ func pair(device: CrimsonDevice) {
 }
 ```
 
+### OTA
+[OTA](https://github.com/NordicSemiconductor/IOS-DFU-Library)
 ### Model
 
 ```swift
