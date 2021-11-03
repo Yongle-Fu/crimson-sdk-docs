@@ -2,7 +2,7 @@
 
 * [LANGS](README.md)
 * [CrimsonSDK Docs](<README (1).md>)
-* [CrimsonSDK](en/README.md)
+* [English](en/README.md)
   * [Table of contents](en/SUMMARY.md)
   * [Android](en/android.md)
   * [C](en/c.md)
@@ -12,7 +12,7 @@
   * [NodeJS](en/node.md)
   * [Electron](en/node\_electron.md)
   * [Python](en/python.md)
-* [CrimsonSDK](zh/README.md)
+* [中文](zh/README.md)
   * [目录](zh/SUMMARY.md)
   * [Android](zh/android.md)
   * [C](zh/c.md)
