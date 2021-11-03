@@ -30,7 +30,8 @@ pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.co
 
 ### 手动集成
 
-添加**CrimsonSDK.xcframework**依赖库，在项目Target -> General -> Linked Frameworks, Libraries and Embedded Content，如图![](<.gitbook/assets/import\_crimson\_sdk (1).png>)
+添加**CrimsonSDK.xcframework**依赖库，在项目Target->General->Linked Frameworks, Libraries and Embedded Content，如图
+![](<.gitbook/assets/import\_crimson\_sdk.png>)
 
 #### Dependencies
 

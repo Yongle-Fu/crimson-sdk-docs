@@ -1,6 +1,6 @@
 # 常见问题说明
 
-## [配对**连接**](https://www.yuque.com/docs/share/4afe9d08-cf4b-42fb-93da-0ee239830090)
+## [配对连接](https://www.yuque.com/docs/share/4afe9d08-cf4b-42fb-93da-0ee239830090)
 
 头环**首次连接**到新设备时，必须先切换到**配对模式**使用
 
