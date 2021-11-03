@@ -1,13 +1,12 @@
-# Table of contents
+# 目录
 
-* [CrimsonSDK](README.md)
+* [CrimsonSDK](broken-reference)
 * [概述](overview.md)
-* [核⼼功能描述](core_function.md)
+* [核⼼功能描述](core\_function.md)
 * [常见问题说明](faq.md)
-* [iOS](ios.md)
-* [Android](android.md)
+* [iOS](broken-reference)
+* [Android](broken-reference)
 * [NodeJS](node.md)
-* [Electron](node_electron.md)
-* [Python](python.md)
+* [Electron](node\_electron.md)
+* [Python](broken-reference)
 * [C](c.md)
-
