@@ -54,11 +54,10 @@ Dependencies **CrimsonSDK.xcframework**，Project->Target->General->Linked Frame
 
 ## Usage
 
-### Scan
-
-#### FAQ
-
+### FAQ
 {% page-ref page="faq.md" %}
+
+### Scan
 
 ```swift
 // scan

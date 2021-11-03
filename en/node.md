@@ -59,11 +59,10 @@ process.on("SIGINT", async () => {
 });
 ```
 
-### Scan
-
-#### FAQ
-
+### FAQ
 {% page-ref page="faq.md" %}
+
+### Scan
 
 ```javascript
 async function startScan() {

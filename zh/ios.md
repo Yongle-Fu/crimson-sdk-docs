@@ -2,17 +2,17 @@
 
 ## Download
 
-[下载SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/ios/CrimsonSDK.xcframework)
+[下载 SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/ios/CrimsonSDK.xcframework)
 
-[下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/ios/CrimsonSDKExample.zip)
+[下载 Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/ios/CrimsonSDKExample.zip)
 
 [演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/example.mp4)
 
 ## Requirement
 
-* iOS 10.0+
-* arm64
-* BitCode Disabled
+- iOS 10.0+
+- arm64
+- BitCode Disabled
 
 ## Integration
 
@@ -30,14 +30,14 @@ pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.co
 
 ### 手动集成
 
-添加**CrimsonSDK.xcframework**依赖库，在项目Target->General->Linked Frameworks, Libraries and Embedded Content，如图
-![](<.gitbook/assets/import\_crimson\_sdk.png>)
+添加**CrimsonSDK.xcframework**依赖库，在项目 Target->General->Linked Frameworks, Libraries and Embedded Content，如图
+![](.gitbook/assets/import_crimson_sdk.png)
 
 #### Dependencies
 
-* Accelerate.framework
-* CoreBluetooth.framework
-* libc++.tbd
+- Accelerate.framework
+- CoreBluetooth.framework
+- libc++.tbd
 
 ### Info.plist
 
@@ -54,13 +54,13 @@ pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.co
 
 ## Usage
 
+### FAQ
+
+{% page-ref page="faq.md" %}
+
 ### Scan 扫描
 
 #### 首次配对新设备时，需要先将头环设置为 _配对_ 模式-->蓝灯快闪
-
-{% content-ref url="faq.md" %}
-[faq.md](faq.md)
-{% endcontent-ref %}
 
 ```swift
 // 开启扫描
@@ -105,9 +105,9 @@ extension ScanVC: CrimsonDelegate {
     @objc optional func onDeviceInfoReady(_ deviceInfo: DeviceInfo)//蓝牙设备信息
     @objc optional func onSystemInfo(_ systemInfo: SystemInfo) //自动休眠信息，震动强度
     // 电量, batteryLevel 区间在0~100, -1表示未知
-    @objc optional func onBatteryLevelChange(_ batteryLevel: Int) 
+    @objc optional func onBatteryLevelChange(_ batteryLevel: Int)
     @objc optional func onConnectivityChange(_ connectivity: Connectivity)//连接状态
-    
+
     //******************** NOTE: invoked after startEEG *******************
     @objc optional func onContactStateChange(_ contactState: ContactState)//佩戴状态
     // NOTE: invoked after startIMU
@@ -190,7 +190,7 @@ extension DFUViewControler: CrimsonOtaDelegate {
 }
 // 佩戴方向，检测是否佩戴反
 @objc public enum Orientation: Int, CaseIterable {
-    case unknown 
+    case unknown
     case upward   //头环戴正
     case downward //头环戴反
 }
@@ -216,7 +216,7 @@ extension DFUViewControler: CrimsonOtaDelegate {
     case unknown = -1
     case messageBuildingFailed = -2
     case paramsError = -3
-    
+
     case deviceNotConnected = -160
     case deviceUuidUnavailable = -196
 
@@ -228,7 +228,7 @@ extension DFUViewControler: CrimsonOtaDelegate {
 @objc public class CrimsonError: NSObject {
     @objc public let code: CrimsonErrorCode
     @objc public let message: String
-    
+
     init(code:CrimsonErrorCode) {
         self.code = code;
         switch code {

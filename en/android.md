@@ -46,10 +46,10 @@ dependencies {
 
 ## Usage
 
-### Scan
-
-#### FAQ
+### FAQ
 {% page-ref page="faq.md" %}
+
+### Scan
 
 ```java
 // Permissions check

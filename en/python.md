@@ -17,11 +17,10 @@ pip3 install -r requirements.txt
 python3 gui.py //or python3 example.py
 ```
 
-### Scan
-
-#### FAQ
-
+### FAQ
 {% page-ref page="faq.md" %}
+
+### Scan
 
 ```python
 CMSNSDK.start_device_scan(on_found_device)

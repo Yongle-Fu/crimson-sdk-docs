@@ -2,13 +2,13 @@
 
 ## Download
 
-[下载SDK及Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/python/python.zip)
+[下载 SDK 及 Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.1/python/python.zip)
 
 ## Requirement
 
-* Python 3.0 or later
-* Mac 10.15 or later
-* Windows 10 build 10.0.15063 or later
+- Python 3.0 or later
+- Mac 10.15 or later
+- Windows 10 build 10.0.15063 or later
 
 ## Usage
 
@@ -17,11 +17,13 @@ pip3 install -r requirements.txt
 python3 gui.py //or python3 example.py
 ```
 
-### Scan 扫描
-
-#### 首次配对新设备时，需要先将头环设置为 _配对_  模式--&gt;蓝灯快闪
+### FAQ
 
 {% page-ref page="faq.md" %}
+
+### Scan 扫描
+
+#### 首次配对新设备时，需要先将头环设置为 _配对_ 模式--&gt;蓝灯快闪
 
 ```python
 CMSNSDK.start_device_scan(on_found_device)
@@ -67,7 +69,7 @@ class DeviceListener(CMSNDeviceListener):
 
     def on_imu_data(self, imu_data):
         print("IMU Data:")
-        print(imu_data)    
+        print(imu_data)
 
     def on_eeg_data(self, eeg_data):
         if eeg_data.signal_type == AFEDataSignalType.lead_off_detection:
@@ -107,26 +109,25 @@ class Orientation(IntEnum):
     unknown = 0
     upward = 1   //头环戴正
     downward = 2 //头环戴反
-    
-// EEG    
+
+// EEG
 class EEGData:
     sequence_num = None
     sample_rate = None
-    eeg_data = None    
+    eeg_data = None
 
-// 脑电频域波段能量        
+// 脑电频域波段能量
 class BrainWave:
     delta = 0
     theta = 0
     alpha = 0
     low_beta = 0
     high_beta = 0
-    gamma = 0    
-    
+    gamma = 0
+
 class IMUData:
     acc_data = None
     gyro_data = None
     euler_angle_data = None
-    sample_rate = None    
+    sample_rate = None
 ```
-
