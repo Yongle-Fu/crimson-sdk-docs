@@ -1,6 +1,5 @@
 # 目录
 
-* [CrimsonSDK](broken-reference)
 * [概述](overview.md)
 * [核⼼功能描述](core\_function.md)
 * [常见问题说明](faq.md)
