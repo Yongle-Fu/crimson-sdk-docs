@@ -31,7 +31,7 @@ pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.co
 ### Manual
 
 Dependencies **CrimsonSDK.xcframework**，Project->Target->General->Linked Frameworks, Libraries and Embedded Content
-![](.gitbook/assets/import_crimson_sdk.png)
+![](../.gitbook/assets/import_crimson_sdk.png)
 
 #### Dependencies
 
