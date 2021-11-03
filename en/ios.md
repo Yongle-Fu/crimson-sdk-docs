@@ -10,9 +10,9 @@
 
 ## Requirement
 
-* iOS 10.0+
-* arm64
-* BitCode Disabled
+- iOS 10.0+
+- arm64
+- BitCode Disabled
 
 ## Integration
 
@@ -31,13 +31,13 @@ pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.co
 ### Manual
 
 Dependencies **CrimsonSDK.xcframework**，Project->Target->General->Linked Frameworks, Libraries and Embedded Content
-![](<.gitbook/assets/import\_crimson\_sdk.png>)
+![](.gitbook/assets/import_crimson_sdk.png)
 
 #### Dependencies
 
-* Accelerate.framework
-* CoreBluetooth.framework
-* libc++.tbd
+- Accelerate.framework
+- CoreBluetooth.framework
+- libc++.tbd
 
 ### Info.plist
 
@@ -57,6 +57,7 @@ Dependencies **CrimsonSDK.xcframework**，Project->Target->General->Linked Frame
 ### Scan
 
 #### FAQ
+
 {% page-ref page="faq.md" %}
 
 ```swift
@@ -78,7 +79,7 @@ extension ScanVC: CrimsonScannerDelegate {
 }
 ```
 
-### Connect 连接
+### Connect
 
 ```swift
 // NOTE: startScan and stopScan should use in pairs, stopScan when connect device
@@ -102,9 +103,9 @@ extension ScanVC: CrimsonDelegate {
     @objc optional func onDeviceInfoReady(_ deviceInfo: DeviceInfo)
     @objc optional func onSystemInfo(_ systemInfo: SystemInfo)
     // batteryLevel 0~100, -1 unknown
-    @objc optional func onBatteryLevelChange(_ batteryLevel: Int) 
+    @objc optional func onBatteryLevelChange(_ batteryLevel: Int)
     @objc optional func onConnectivityChange(_ connectivity: Connectivity)
-    
+
     //******************** NOTE: invoked after startEEG *******************
     @objc optional func onContactStateChange(_ contactState: ContactState)
     // NOTE: invoked after startIMU
@@ -181,12 +182,12 @@ extension DFUViewControler: CrimsonOtaDelegate {
 
 @objc public enum ContactState: Int, CaseIterable {
     case unknown = 0
-    case contact = 1 
+    case contact = 1
     case noContact = 2
 }
 
 @objc public enum Orientation: Int, CaseIterable {
-    case unknown 
+    case unknown
     case upward   //Normal
     case downward //UpsideDown
 }
@@ -212,7 +213,7 @@ extension DFUViewControler: CrimsonOtaDelegate {
     case unknown = -1
     case messageBuildingFailed = -2
     case paramsError = -3
-    
+
     case deviceNotConnected = -160
     case deviceUuidUnavailable = -196
 
@@ -224,7 +225,7 @@ extension DFUViewControler: CrimsonOtaDelegate {
 @objc public class CrimsonError: NSObject {
     @objc public let code: CrimsonErrorCode
     @objc public let message: String
-    
+
     init(code:CrimsonErrorCode) {
         self.code = code;
         switch code {
@@ -265,14 +266,14 @@ extension DFUViewControler: CrimsonOtaDelegate {
 }
 ```
 
-### StartEEG 开启传输脑电数据
+### StartEEG
 
 ```swift
 device.delegate = self
 device.startEEGStream()
 ```
 
-### StartIMU 开启传输陀螺仪数据
+### StartIMU
 
 ```swift
 // IMU SampleRate
