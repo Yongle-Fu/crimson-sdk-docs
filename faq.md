@@ -1,6 +1,6 @@
 # 常见问题说明
 
-## [配对**连接**](https://www.yuque.com/docs/share/4afe9d08-cf4b-42fb-93da-0ee239830090)\*\*\*\*
+## [配对**连接**](https://www.yuque.com/docs/share/4afe9d08-cf4b-42fb-93da-0ee239830090)
 
 头环**首次连接**到新设备时，必须先切换到**配对模式**使用
 
@@ -8,7 +8,7 @@
 * 配对模式，关机状态长按电源键直至头环振动两次，此时LED为蓝灯快闪
 * 工作模式，开机状态默认模式，此时LED为蓝灯慢闪
 
-扫描-&gt;扫描成功-&gt;连接-&gt;连接成功-&gt;配对/校验配对信息--&gt;配对/校验配对信息成功-&gt;StartEEG
+扫描->扫描成功->连接->连接成功->配对/校验配对信息-->配对/校验配对信息成功->StartEEG
 
 ```java
 if 存在配对记录 
@@ -41,4 +41,3 @@ colorUnContact: 0x6E6E64 // RGB 110,110,100 配对成功
 colorDisbaled: 0x0 // RGB 0,0,0 黑色即不显示灯光
 colorContact: 0xffffff // RGB 255,255,255 佩戴通过
 ```
-

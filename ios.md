@@ -16,7 +16,7 @@
 
 ## Integration
 
-### CocoaPods \(iOS 10.0+\)
+### CocoaPods (iOS 10.0+)
 
 You can use CocoaPods to install **CrimsonSDK** by adding it to your Podfile:
 
@@ -30,12 +30,12 @@ pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.co
 
 ### 手动集成
 
-添加**CrimsonSDK.xcframework**依赖库，在项目Target -&gt; General -&gt; Linked Frameworks, Libraries and Embedded Content，如图![](.gitbook/assets/import_crimson_sdk.png)
+添加**CrimsonSDK.xcframework**依赖库，在项目Target -> General -> Linked Frameworks, Libraries and Embedded Content，如图![](<.gitbook/assets/import\_crimson\_sdk (1).png>)
 
 #### Dependencies
 
-* Accelerate.framework 
-* CoreBluetooth.framework 
+* Accelerate.framework
+* CoreBluetooth.framework
 * libc++.tbd
 
 ### Info.plist
@@ -55,9 +55,11 @@ pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.co
 
 ### Scan 扫描
 
-#### 首次配对新设备时，需要先将头环设置为 _配对_  模式--&gt;蓝灯快闪
+#### 首次配对新设备时，需要先将头环设置为 _配对_ 模式-->蓝灯快闪
 
-{% page-ref page="faq.md" %}
+{% content-ref url="faq.md" %}
+[faq.md](faq.md)
+{% endcontent-ref %}
 
 ```swift
 // 开启扫描
@@ -323,4 +325,3 @@ public func setSleepIdleTime(_ timeSec: Int, onResponse: @escaping CrimsonRespCa
 // @param intensity => vibration intensity, 0 ~ 100
 public func setVibrationIntensity(_ intensity: Int, onResponse: @escaping CrimsonRespCallback)
 ```
-
