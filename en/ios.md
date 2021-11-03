@@ -30,8 +30,8 @@ pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-cn-beijing.aliyuncs.co
 
 ### Manual
 
-Dependencies **CrimsonSDK.xcframework**，Project->Target->General->Linked Frameworks, Libraries and Embedded Content
-![](../.gitbook/assets/import_crimson_sdk.png)
+- Project->Target->General->Linked Frameworks, Libraries and Embedded Content
+  ![](../.gitbook/assets/import_crimson_sdk.png)
 
 #### Dependencies
 
@@ -55,6 +55,7 @@ Dependencies **CrimsonSDK.xcframework**，Project->Target->General->Linked Frame
 ## Usage
 
 ### FAQ
+
 {% page-ref page="faq.md" %}
 
 ### Scan
