@@ -60,6 +60,7 @@ process.on("SIGINT", async () => {
 ```
 
 ### FAQ
+
 {% page-ref page="faq.md" %}
 
 ### Scan

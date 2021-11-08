@@ -18,6 +18,7 @@ python3 gui.py //or python3 example.py
 ```
 
 ### FAQ
+
 {% page-ref page="faq.md" %}
 
 ### Scan

@@ -2,7 +2,7 @@
 
 ## Download
 
-[下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/android/android_example.zip)
+[下载 Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/android/android_example.zip)
 
 [演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/android/example.mp4)
 
@@ -47,11 +47,12 @@ dependencies {
 ## Usage
 
 ### FAQ
+
 {% page-ref page="faq.md" %}
 
 ### Scan 扫描
 
-#### 首次配对新设备时，需要先将头环设置为 _配对_  模式--&gt;蓝灯快闪
+#### 首次配对新设备时，需要先将头环设置为 _配对_ 模式--&gt;蓝灯快闪
 
 ```java
 // Permissions check
@@ -79,11 +80,11 @@ public class ScanActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         CrimsonSDK.setLogLevel(CrimsonSDK.LogLevel.INFO);
         CrimsonSDK.registerBLEStateReceiver(this); //注册蓝牙状态监听
     }
-    
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -106,7 +107,7 @@ CrimsonSDK.startScan(new CrimsonDeviceScanListener() {
             STATE_BLE_TURNING_ON,
             STATE_BLE_ON,
             STATE_BLE_TURNING_OFF
-    }) 
+    })
     */
     @Override
     public void onBluetoothAdapterStateChange(int state) {
@@ -164,7 +165,7 @@ public abstract class CrimsonDeviceListener {
     public void onBatteryLevelChange(int batteryLevel){} //电量
     // Enum Connectivity
     public void onConnectivityChange(int connectivity){} //连接状态
-    
+
     //******************** NOTE: invoked after startEEG *******************
     // Enum ContactState
     public void onContactStateChange(int state){} //佩戴状态
@@ -172,7 +173,7 @@ public abstract class CrimsonDeviceListener {
     public void onOrientationChange(int orientation){} // 佩戴方向
     public void onIMUData(IMU data){} // 陀螺仪数据
     public void onEEGData(EEG data){} // 脑电EEG数据
-    public void onBrainWave(BrainWave wave){}    //脑电频域波段数据 
+    public void onBrainWave(BrainWave wave){}    //脑电频域波段数据
     public void onAttention(float attention){}   //注意力指数
     public void onMeditation(float meditation){} //冥想指数
     public void onBlink(){} // 眨眼事件
@@ -270,7 +271,7 @@ public class CrimsonError {
     public static final int ERROR_PERMISSION_DENIED = -128;
     public static final int ERROR_DEVICE_NOT_CONNECTED = -160;
     public static final int ERROR_RESPONSE_TIMEOUT = -1001;
-    
+
     private int code;
     private String message;
 
@@ -401,4 +402,3 @@ public int setSleepIdleTime(int timeSec, CrimsonResponseCallback callback)
 // @param intensity => vibration intensity, 0 ~ 100
 public int setVibrationIntensity(int intensity, CrimsonResponseCallback callback)
 ```
-

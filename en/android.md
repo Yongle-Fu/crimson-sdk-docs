@@ -47,6 +47,7 @@ dependencies {
 ## Usage
 
 ### FAQ
+
 {% page-ref page="faq.md" %}
 
 ### Scan
@@ -77,11 +78,11 @@ public class ScanActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         CrimsonSDK.setLogLevel(CrimsonSDK.LogLevel.INFO);
         CrimsonSDK.registerBLEStateReceiver(this); //注册蓝牙状态监听
     }
-    
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -104,7 +105,7 @@ CrimsonSDK.startScan(new CrimsonDeviceScanListener() {
             STATE_BLE_TURNING_ON,
             STATE_BLE_ON,
             STATE_BLE_TURNING_OFF
-    }) 
+    })
     */
     @Override
     public void onBluetoothAdapterStateChange(int state) {
@@ -159,10 +160,10 @@ public abstract class CrimsonDeviceListener {
     public void onError(CrimsonError error){}
     public void onDeviceInfoReady(DeviceInfo info){}
     // batteryLevel 0~100, -1 unknown
-    public void onBatteryLevelChange(int batteryLevel){} 
+    public void onBatteryLevelChange(int batteryLevel){}
     // Enum Connectivity
     public void onConnectivityChange(int connectivity){}
-    
+
     //******************** NOTE: invoked after startEEG *******************
     // Enum ContactState
     public void onContactStateChange(int state){}
@@ -234,7 +235,7 @@ public class Connectivity {
 
 public class ContactState {
     public static final int UNKNOWN = 0;
-    public static final int CONTACT = 1;   
+    public static final int CONTACT = 1;
     public static final int NO_CONTACT = 2;
 }
 
@@ -267,7 +268,7 @@ public class CrimsonError {
     public static final int ERROR_PERMISSION_DENIED = -128;
     public static final int ERROR_DEVICE_NOT_CONNECTED = -160;
     public static final int ERROR_RESPONSE_TIMEOUT = -1001;
-    
+
     private int code;
     private String message;
 
@@ -397,4 +398,3 @@ public int setSleepIdleTime(int timeSec, CrimsonResponseCallback callback)
 // @param intensity => vibration intensity, 0 ~ 100
 public int setVibrationIntensity(int intensity, CrimsonResponseCallback callback)
 ```
-

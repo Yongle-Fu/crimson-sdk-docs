@@ -4,26 +4,26 @@
 
 头环**首次连接**到新设备时，必须先切换到**配对模式**使用
 
-* 开关机，关机状态短按电源键开机，开机状态短按电源键关机
-* 配对模式，关机状态长按电源键直至头环振动两次，此时LED为蓝灯快闪
-* 工作模式，开机状态默认模式，此时LED为蓝灯慢闪
+- 开关机，关机状态短按电源键开机，开机状态短按电源键关机
+- 配对模式，关机状态长按电源键直至头环振动两次，此时 LED 为蓝灯快闪
+- 工作模式，开机状态默认模式，此时 LED 为蓝灯慢闪
 
 扫描->扫描成功->连接->连接成功->配对/校验配对信息-->配对/校验配对信息成功->StartEEG
 
 ```java
-if 存在配对记录 
+if 存在配对记录
     scan->connect->validatePairInfo->
     if validatePairInfo_success: StartEEG
     else if validatePairInfo_fail_error_code == 4: // 提示去pair
     else //提示retry
 
-else    
+else
     // 提示用户切换到配对模式
     // 可过滤掉不处于配对模式的设备
     scan->connect->pair->(if success)->存储配对记录 & StartEEG
 ```
 
-## [LED灯光](https://www.yuque.com/docs/share/a0cee022-8f4e-4f06-9221-e05cfec2b608)
+## [LED 灯光](https://www.yuque.com/docs/share/a0cee022-8f4e-4f06-9221-e05cfec2b608)
 
 ```java
 // 在连接并配对/校验配对信息成功之后，灯光由软件/app控制，其他情况固件端会进行接管

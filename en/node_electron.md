@@ -6,11 +6,11 @@
 
 ## Requirement
 
-* BLE 4.2 or later
-* NodeJS 12.10.x or later
-* Mac 10.15 or later
-* Windows 10 build 10.0.15063 or later
-* Linux
+- BLE 4.2 or later
+- NodeJS 12.10.x or later
+- Mac 10.15 or later
+- Windows 10 build 10.0.15063 or later
+- Linux
 
 #### .npmrc
 
@@ -32,4 +32,3 @@ extraResources:
       - "node-addon-api/**/*"
       - "file-uri-to-path/**/*"
 ```
-
