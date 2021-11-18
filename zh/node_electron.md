@@ -2,8 +2,8 @@
 
 ## Download
 
-[source](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-demo.zip)
-[app](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-demo.zip)
+- [source](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-demo.zip)
+- [app](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-demo.zip)
 
 ## Requirement
 
