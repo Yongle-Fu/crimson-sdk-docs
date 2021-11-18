@@ -2,7 +2,8 @@
 
 ## Download
 
-[下载 SDK 及 Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/node/electron.zip)
+[source](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-demo.zip)
+[app](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-demo.zip)
 
 ## Requirement
 
@@ -16,7 +17,9 @@
 
 ```text
 runtime = electron
-target = 7.3.3
+target = 8.5.5
+
+# in China minor
 electron_mirror="https://npm.taobao.org/mirrors/electron/"
 
 disturl=https://atom.io/download/atom-shell
@@ -24,18 +27,4 @@ disturl=https://atom.io/download/atom-shell
 
 registry=https://registry.npm.taobao.org
 # registry=https://registry.npmjs.org/
-```
-
-#### electron-builder.yml
-
-```yaml
-extraResources:
-  - from: "node_modules"
-    to: "node_modules"
-    filter:
-      - "cmsn-noble/**/*"
-      - "bindings/**/*"
-      - "napi-thread-safe-callback/**/*"
-      - "node-addon-api/**/*"
-      - "file-uri-to-path/**/*"
 ```

@@ -2,7 +2,8 @@
 
 ## Download
 
-[Sample](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/node/electron.zip)
+[source](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-demo.zip)
+[app](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-demo.zip)
 
 ## Requirement
 
@@ -16,19 +17,5 @@
 
 ```text
 runtime = electron
-target = 8.2.5
-```
-
-#### electron-builder.yml
-
-```yaml
-extraResources:
-  - from: "node_modules"
-    to: "node_modules"
-    filter:
-      - "cmsn-noble/**/*"
-      - "bindings/**/*"
-      - "napi-thread-safe-callback/**/*"
-      - "node-addon-api/**/*"
-      - "file-uri-to-path/**/*"
+target = 8.5.5
 ```
