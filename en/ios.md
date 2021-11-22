@@ -5,6 +5,7 @@
 [SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/ios/CrimsonSDK.xcframework.zip)
 
 [Sample](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/ios/SwiftExample.zip)
+[Sample-CocoaPods](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/ios/CrimsonSDKExample.zip)
 
 [Video](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/example.mp4)
 

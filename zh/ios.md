@@ -5,6 +5,7 @@
 [下载SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/ios/CrimsonSDK.xcframework.zip)
 
 [下载Example](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/ios/SwiftExample.zip)
+[下载Example-CocoaPods](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/ios/CrimsonSDKExample.zip)
 
 [演示视频](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/example.mp4)
 
