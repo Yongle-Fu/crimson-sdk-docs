@@ -2,9 +2,9 @@
 
 ## Download
 
-[SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/ios/CrimsonSDK.xcframework)
+[SDK](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/ios/CrimsonSDK.xcframework.zip)
 
-[Sample](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.2/ios/CrimsonSDKExample.zip)
+[Sample](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/ios/SwiftExample.zip)
 
 [Video](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/example.mp4)
 
