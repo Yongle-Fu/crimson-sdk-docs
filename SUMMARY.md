@@ -1,6 +1,5 @@
 # Table of contents
 
-- [LANGS](README.md)
 - [English](en/README.md)
   - [Feature](en/feature.md)
   - [FAQ](en/faq.md)
