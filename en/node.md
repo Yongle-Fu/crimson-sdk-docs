@@ -2,7 +2,7 @@
 
 ## Download
 
-[Sample](https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/node/cmsn-node.zip)
+[Sample](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/node/cmsn-node.zip)
 
 ## Requirement
 
