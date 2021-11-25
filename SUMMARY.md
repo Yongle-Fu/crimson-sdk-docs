@@ -5,6 +5,7 @@
   - [Feature](en/feature.md)
   - [FAQ](en/faq.md)
   - [C](en/c.md)
+  - [C#](en/csharp.md)
   - [Python](en/python.md)
   - [NodeJS](en/node.md)
   - [Electron](en/node_electron.md)
