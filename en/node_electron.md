@@ -3,8 +3,8 @@
 ## Download
 
 - [source](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-demo.zip)
-- [Mac](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-demo.zip)
-- [Win](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/electron-cmsn-ble-setup-1.0.0-x64.exe)
+- [Mac](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-1.0.0.dmg)
+- [Win](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/node/cmsn-electron-setup-1.0.0-x64.exe)
 
 ## Requirement
 
