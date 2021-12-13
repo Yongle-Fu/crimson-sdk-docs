@@ -2,9 +2,8 @@
 
 ## Download
 
-- [SDK](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/ios/CrimsonSDK.xcframework.zip)
-- [Sample](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.3/ios/SwiftExample.zip)
-- [Sample-CocoaPods](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/ios/CrimsonSDKExample.zip)
+- [SDK](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.1.0/ios/CrimsonSDK.xcframework.zip)
+- [Sample-CocoaPods](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.1.0/ios/CrimsonSDKExample.zip)
 - [Video](https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.0/ios/example.mp4)
 
 ## Requirement
@@ -24,7 +23,7 @@ platform :ios, '10.0'
 
 use_frameworks!
 
-pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.0.4/ios/CrimsonSDK.podspec'
+pod 'CrimsonSDK', :podspec => 'https://focus-resource.oss-accelerate-overseas.aliyuncs.com/universal/crimson-sdk-prebuild/1.1.0/ios/CrimsonSDK.podspec'
 ```
 
 ### Manual
